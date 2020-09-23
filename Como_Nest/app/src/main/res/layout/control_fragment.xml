@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:gravity="center"
+
+        >
+
+
+        <!-- Head -->
+        <LinearLayout
+            android:id="@+id/linearLayoutUp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="20"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/btnNLight"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="clickBtnNLight"
+                        android:src="@drawable/ic_nl_and_il_custom" />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_nl_letters"
+                        android:onClick="clickBtnNLight"
+                        android:layout_marginVertical="25dp"
+                        android:layout_marginRight="35dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:id="@+id/btnILight"
+                        android:onClick="clickBtnILight"
+                        android:layout_weight="1"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:src="@drawable/ic_nl_and_il_custom"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_il_letters"
+                        android:onClick="clickBtnILight"
+                        android:layout_marginVertical="25dp"
+
+                        android:layout_marginRight="35dp"
+
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:background="@drawable/ic_nest"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="30dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvAddressBoat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="50"
+                    android:padding="0dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorCircleFill"
+                    android:textSize="35sp"
+                    android:textStyle="bold|italic" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20">
+
+            <TextView
+                android:id="@+id/crtica"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="|"
+                android:textAlignment="center"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorCircleFill">
+
+
+            </TextView>
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/circularSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
+                app:cs_circle_color="@color/colorCircleFill"
+                app:cs_circle_progress_color="@color/colorCircleFill"
+                app:cs_circle_stroke_width="4dp"
+                app:cs_circle_style="round"
+                app:cs_circle_x_radius="250dp"
+                app:cs_circle_y_radius="250dp"
+                app:cs_disable_pointer="false"
+                app:cs_disable_progress_glow="true"
+                app:cs_end_angle="0"
+                app:cs_hide_progress_when_empty="false"
+                app:cs_lock_enabled="false"
+                app:cs_maintain_equal_circle="false"
+                app:cs_max="200"
+                app:cs_move_outside_circle="false"
+                app:cs_negative_enabled="true"
+                app:cs_pointer_alpha_ontouch="50"
+                app:cs_pointer_angle="0"
+                app:cs_pointer_color="@color/colorCirclePointer"
+                app:cs_pointer_halo_border_width="0dp"
+                app:cs_pointer_halo_color="@color/colorCirclePointer"
+                app:cs_pointer_halo_color_ontouch="@color/colorCirclePointer"
+                app:cs_pointer_halo_width="10dp"
+                app:cs_pointer_stroke_width="25dp"
+                app:cs_progress="100"
+                app:cs_start_angle="180"
+                app:cs_use_custom_radii="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/boatwheel"
+                android:layout_width="149dp"
+                android:layout_height="87dp"
+                android:layout_alignStart="@+id/circularSeekBar"
+                android:layout_alignTop="@+id/circularSeekBar"
+                android:layout_alignEnd="@+id/circularSeekBar"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="50dp"
+                android:text="100"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivPropeler"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_alignStart="@+id/circularSeekBar"
+                    android:layout_alignTop="@+id/circularSeekBar"
+                    android:layout_alignEnd="@+id/circularSeekBar"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginEnd="50dp"
+
+                    app:srcCompat="@drawable/ic_prop_svg_2" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutGear123"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="20"
+            android:layout_below="@+id/circularSeekBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-80dp"
+            android:layout_marginEnd="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <Button
+                android:id="@+id/btnGear1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_1_custom"
+                android:layout_weight="1"
+                android:onClick="clickBtn1"/>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"/>
+
+
+            <Button
+                android:id="@+id/btnGear2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/btnGear1"
+                android:background="@drawable/ic_2_custom"
+                android:layout_weight="1"
+                android:onClick="clickBtn2"
+                />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"/>
+
+
+            <Button
+                android:id="@+id/btnGear3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_3_custom"
+                android:layout_weight="1"
+                android:onClick="clickBtn3"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutGearNRBatSat"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_weight="20"
+            android:layout_below="@+id/linearLayoutGear123"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btnBat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bat_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="-10dp"
+                android:onClick="clickBtnBattery"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnGearN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_n_custom"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:onClick="clickBtnN"/>
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnGearR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_r_custom"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:onClick="clickBtnR"/>
+
+            <Button
+                android:id="@+id/btnSat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_sat_custom"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="-10dp"
+                android:layout_weight="1"
+                />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTakeControl"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="20"
+            android:layout_below="@+id/linearLayoutGearNRBatSat"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="-2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_pwr_dugme_custom" />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llBat1"
+        >
+
+
+        <TextView
+            android:id="@+id/tvBat1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bat 1"
+            android:textSize="25sp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rbBat1_25"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"
+                 />
+
+            <RadioButton
+                android:id="@+id/rbBat1_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"
+
+                />
+
+            <RadioButton
+                android:id="@+id/rbBat1_75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"
+                />
+
+            <RadioButton
+                android:id="@+id/rbBat1_100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"
+                 />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBat1Set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Set"
+            android:onClick="clickBtn1Set"
+            android:layout_marginBottom="5dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llBat2"
+        >
+
+
+        <TextView
+            android:id="@+id/tvBat2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bat 2"
+            android:textSize="25sp"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rbBat2_25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"/>
+
+            <RadioButton
+                android:id="@+id/rbBat2_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"/>
+
+            <RadioButton
+                android:id="@+id/rbBat2_75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"/>
+
+            <RadioButton
+                android:id="@+id/rbBat2_100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorBackgroundStart"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBat2Set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Set"
+            android:onClick="clickBtn2Set"
+            android:layout_marginBottom="5dp"
+
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Close"
+        android:id="@+id/btnClose"
+        />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\bin\Debug\ComoNestJoystickCalibration.exe.config
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\bin\Debug\ComoNestJoystickCalibration.exe
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\bin\Debug\ComoNestJoystickCalibration.pdb
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.csprojAssemblyReference.cache
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.Form1.resources
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.Properties.Resources.resources
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.csproj.GenerateResource.cache
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.csproj.CoreCompileInputs.cache
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.exe
+C:\Users\Dan\source\repos\ComoNestJoystickCalibration\ComoNestJoystickCalibration\obj\Debug\ComoNestJoystickCalibration.pdb

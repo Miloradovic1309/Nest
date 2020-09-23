@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>-->
+
+    <color name="colorPrimary">#99CCFF</color>
+    <color name="colorPrimaryDark">#333A47</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorCircleFill">#333A47</color>
+    <color name="colorCirclePointer">#99CCFF</color>
+
+    <color name="colorBackgroundStart">#1FB5E2</color>
+    <color name="colorBackgroundCenter">#FFFFFF</color>
+    <color name="colorBackgroundEnd">#38C5F0</color>
+
+
+    <color name="colorGrey">#BFBFBF</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <color name="colorDarkGreen">#006600</color>
+    <color name="colorBlack">#000000</color>
+</resources>
