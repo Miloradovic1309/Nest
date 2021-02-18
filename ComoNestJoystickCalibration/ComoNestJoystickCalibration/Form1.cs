@@ -179,11 +179,12 @@ namespace ComoNestJoystickCalibration
                         }
                     }
 
-                    else if ((buf[i] == 0x3B) && (startReceivingData == true))
+                    else if ((buf[i] == 0x3B) && (startReceivingData == true) && (bytes_counter + 1 == length_received_bytes))
                     {
                         startReceivingData = false;
                         receivedBytes[bytes_counter] = buf[i];
                         bytes_counter = 0;
+                        length_received_bytes = 0;
 
 
 
@@ -218,6 +219,7 @@ namespace ComoNestJoystickCalibration
                     if (startReceivingData)
                     {
                         receivedBytes[bytes_counter] = buf[i];
+                        
                         if ((receivedBytes[0] == 0x21))
                         {
                             bytes_counter++;
@@ -230,6 +232,16 @@ namespace ComoNestJoystickCalibration
                             for (int z = 0; z < 18; z++)
                             {
                                 receivedBytes[z] = 0;
+                            }
+                        }
+
+                        if(bytes_counter == 2)
+                        {
+                            switch (receivedBytes[1])
+                            {
+                                case 0x51:
+                                    length_received_bytes = 17;
+                                    break;
                             }
                         }
 
