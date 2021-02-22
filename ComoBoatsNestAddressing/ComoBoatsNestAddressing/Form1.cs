@@ -14,6 +14,14 @@ namespace ComoBoatsNestAddressing
     public partial class Form1 : Form
     {
         SerialPort serialPort = new SerialPort();
+
+
+        byte[] dataForSend = new byte[5];
+        byte[] data1 = new byte[6];
+
+        int address;
+        int channel;
+
         public Form1()
         {
             InitializeComponent();
@@ -131,14 +139,12 @@ namespace ComoBoatsNestAddressing
         private void buttonSetAddress_Click(object sender, EventArgs e)
         {
             try
-            {
-                byte[] dataForSend = new byte[5];
-                byte[] data1 = new byte[5];
-
-                int address;
+            {               
 
                 address = 0x3F + Convert.ToInt32(numericUpDownAddress.Value);
+                channel = Convert.ToInt32(numericUpDownChannel.Value);
 
+                /*
                 dataForSend[0] = Convert.ToByte(address >> 8);
                 dataForSend[1] = Convert.ToByte(address);
                 dataForSend[2] = 0X3D;
@@ -152,6 +158,20 @@ namespace ComoBoatsNestAddressing
 
                 data1[3] = Convert.ToByte(dataForSend[3]);
                 data1[4] = Convert.ToByte(dataForSend[4]);
+                */
+
+
+                data1[0] = Convert.ToByte(0xC0);
+                data1[1] = Convert.ToByte(address >> 8);
+                data1[2] = Convert.ToByte(address);
+
+                data1[3] = Convert.ToByte(0x3F);
+                data1[4] = Convert.ToByte(channel);
+                data1[5] = Convert.ToByte(0xC4);
+                
+
+                
+
 
 
 
@@ -162,6 +182,66 @@ namespace ComoBoatsNestAddressing
             {
                 MessageBox.Show("First, open the port");
             }
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+
+                address = 0x3F + Convert.ToInt32(numericUpDownAddress.Value);
+                channel = Convert.ToInt32(numericUpDownChannel.Value);
+
+                /*
+                dataForSend[0] = Convert.ToByte(address >> 8);
+                dataForSend[1] = Convert.ToByte(address);
+                dataForSend[2] = 0X3D;
+                dataForSend[3] = 0x17;
+                dataForSend[4] = 0xC4;
+
+
+                data1[0] = Convert.ToByte(dataForSend[0]);
+                data1[1] = Convert.ToByte(dataForSend[1]);    // adresa
+                data1[2] = Convert.ToByte(dataForSend[2]);   //naredba
+
+                data1[3] = Convert.ToByte(dataForSend[3]);
+                data1[4] = Convert.ToByte(dataForSend[4]);
+                */
+
+
+                data1[0] = Convert.ToByte(0xC0);
+                data1[1] = Convert.ToByte(0x00);
+                data1[2] = Convert.ToByte(0x30);
+
+                data1[3] = Convert.ToByte(0x3F);
+                data1[4] = Convert.ToByte(channel);
+                data1[5] = Convert.ToByte(0xC4);
+
+
+
+
+
+
+
+
+                serialPort.Write(data1, 0, data1.Length);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("First, open the port");
+            }
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelFreq.Text = Convert.ToInt32(410 + numericUpDownChannel.Value).ToString() + "MHz";
         }
     }
 }

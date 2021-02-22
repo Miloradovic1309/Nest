@@ -8,3 +8,13 @@ C:\Users\Dan\source\repos\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\De
 C:\Users\Dan\source\repos\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.csproj.CoreCompileInputs.cache
 C:\Users\Dan\source\repos\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.exe
 C:\Users\Dan\source\repos\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.pdb
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\bin\Debug\ComoBoatsNestAddressing.exe.config
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\bin\Debug\ComoBoatsNestAddressing.exe
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\bin\Debug\ComoBoatsNestAddressing.pdb
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.csprojAssemblyReference.cache
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.Form1.resources
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.Properties.Resources.resources
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.csproj.GenerateResource.cache
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.csproj.CoreCompileInputs.cache
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.exe
+E:\ComoBoats\NNEESSTT\ComoBoatsNestAddressing\ComoBoatsNestAddressing\obj\Debug\ComoBoatsNestAddressing.pdb
