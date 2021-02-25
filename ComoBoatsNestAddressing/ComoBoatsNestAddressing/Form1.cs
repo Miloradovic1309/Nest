@@ -162,8 +162,8 @@ namespace ComoBoatsNestAddressing
 
 
                 data1[0] = Convert.ToByte(0xC0);
-                data1[1] = Convert.ToByte(address >> 8);
-                data1[2] = Convert.ToByte(address);
+                data1[1] = Convert.ToByte((address >> 8) & 0xFF);
+                data1[2] = Convert.ToByte(address & 0xFF);
 
                 data1[3] = Convert.ToByte(0x3F);
                 data1[4] = Convert.ToByte(channel);
