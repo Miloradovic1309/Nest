@@ -16,6 +16,8 @@ void Timer2_interrupt() iv IVT_INT_TIM2 {
   } */
   
 
+  
+
 
   
   if((battery_chosen_old == 1 || battery_chosen_old == 2)&& ACCUMULATOR_SENSE)
@@ -50,6 +52,14 @@ void Timer4_interrupt() iv IVT_INT_TIM4 {
     LED4 = ~LED4;
   }
   */
+  
+  if(bitBatteryChangeBlockCounter){
+    batteryChangeBlockCounter++;
+    if(batteryChangeBlockCounter >= 60){
+      bitBatteryChangeBlockCounter = 0;
+      batteryChangeBlockCounter = 0;
+    }
+  }
   
 
   

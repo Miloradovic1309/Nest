@@ -11,14 +11,14 @@ STRB	R0, [R1, #0]
 UXTB	R0, R0
 CMP	R0, #33
 IT	NE
-BNE	L__interruptLora64
+BNE	L__interruptLora65
 MOVW	R1, #lo_addr(_startReceivingData6+0)
 MOVT	R1, #hi_addr(_startReceivingData6+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptLora63
-L__interruptLora62:
+BNE	L__interruptLora64
+L__interruptLora63:
 ;interruptUart6.c,13 :: 		uart_count6=0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_uart_count6+0)
@@ -65,21 +65,21 @@ L_interruptLora4:
 IT	AL
 BAL	L_interruptLora6
 ;interruptUart6.c,12 :: 		if((receive6 == 0x21)&&(!startReceivingData6)){
+L__interruptLora65:
 L__interruptLora64:
-L__interruptLora63:
 ;interruptUart6.c,22 :: 		else if((receive6 == 0x3B)&&(startReceivingData6)&&(uart_count6 + 1 == uartLength6)){
 MOVW	R0, #lo_addr(_receive6+0)
 MOVT	R0, #hi_addr(_receive6+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #59
 IT	NE
-BNE	L__interruptLora70
+BNE	L__interruptLora71
 MOVW	R1, #lo_addr(_startReceivingData6+0)
 MOVT	R1, #hi_addr(_startReceivingData6+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L__interruptLora69
+BEQ	L__interruptLora70
 MOVW	R0, #lo_addr(_uart_count6+0)
 MOVT	R0, #hi_addr(_uart_count6+0)
 LDRH	R0, [R0, #0]
@@ -90,8 +90,8 @@ MOVT	R0, #hi_addr(_uartLength6+0)
 LDRH	R0, [R0, #0]
 CMP	R1, R0
 IT	NE
-BNE	L__interruptLora68
-L__interruptLora61:
+BNE	L__interruptLora69
+L__interruptLora62:
 ;interruptUart6.c,23 :: 		uart_receive6[uart_count6] = receive6;
 MOVW	R2, #lo_addr(_uart_count6+0)
 MOVT	R2, #hi_addr(_uart_count6+0)
@@ -123,18 +123,18 @@ MOVT	R0, #hi_addr(_uart_receive6+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #33
 IT	NE
-BNE	L__interruptLora67
+BNE	L__interruptLora68
 MOVW	R0, #lo_addr(_uart_receive6+1)
 MOVT	R0, #hi_addr(_uart_receive6+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #192
 IT	NE
-BNE	L__interruptLora66
+BNE	L__interruptLora67
 MOVS	R1, #59
 MOVW	R0, #lo_addr(_uart_receive6+6)
 MOVT	R0, #hi_addr(_uart_receive6+6)
 STRB	R1, [R0, #0]
-L__interruptLora60:
+L__interruptLora61:
 ;interruptUart6.c,36 :: 		receivedCheckStatus = 1;
 MOVS	R1, #1
 SXTB	R1, R1
@@ -233,7 +233,14 @@ L_interruptLora20:
 L_interruptLora19:
 ;interruptUart6.c,62 :: 		}
 L_interruptLora17:
-;interruptUart6.c,64 :: 		if(uart_receive6[4] & 0x08){
+;interruptUart6.c,64 :: 		if(!bitBatteryChangeBlockCounter){
+MOVW	R1, #lo_addr(_bitBatteryChangeBlockCounter+0)
+MOVT	R1, #hi_addr(_bitBatteryChangeBlockCounter+0)
+LDR	R0, [R1, #0]
+CMP	R0, #0
+IT	NE
+BNE	L_interruptLora21
+;interruptUart6.c,65 :: 		if(uart_receive6[4] & 0x08){
 MOVW	R0, #lo_addr(_uart_receive6+4)
 MOVT	R0, #hi_addr(_uart_receive6+4)
 LDRB	R0, [R0, #0]
@@ -241,103 +248,103 @@ AND	R0, R0, #8
 UXTB	R0, R0
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora21
-;interruptUart6.c,65 :: 		if(wannaBeActiveBattery1_old==0){
+BEQ	L_interruptLora22
+;interruptUart6.c,66 :: 		if(wannaBeActiveBattery1_old==0){
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptLora22
-;interruptUart6.c,66 :: 		uart4Battery2TurnedOff();
+BNE	L_interruptLora23
+;interruptUart6.c,67 :: 		uart4Battery2TurnedOff();
 BL	_uart4Battery2TurnedOff+0
-;interruptUart6.c,67 :: 		wannaBeActiveBattery2_old = 0;
+;interruptUart6.c,68 :: 		wannaBeActiveBattery2_old = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,68 :: 		wannaBeActiveBattery2 = 0;
+;interruptUart6.c,69 :: 		wannaBeActiveBattery2 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,70 :: 		uart4Battery1TurnedOn();
+;interruptUart6.c,71 :: 		uart4Battery1TurnedOn();
 BL	_uart4Battery1TurnedOn+0
-;interruptUart6.c,71 :: 		wannaBeActiveBattery1_old = 1;
+;interruptUart6.c,72 :: 		wannaBeActiveBattery1_old = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,72 :: 		wannaBeActiveBattery1 = 1;
+;interruptUart6.c,73 :: 		wannaBeActiveBattery1 = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,74 :: 		battery_change_continue = 0;
+;interruptUart6.c,75 :: 		battery_change_continue = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_battery_change_continue+0)
 MOVT	R0, #hi_addr(_battery_change_continue+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,75 :: 		battery_change = 0;
+;interruptUart6.c,76 :: 		battery_change = 0;
 MOVW	R0, #lo_addr(_battery_change+0)
 MOVT	R0, #hi_addr(_battery_change+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,76 :: 		battery_change_count = 0;
+;interruptUart6.c,77 :: 		battery_change_count = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_change_count+0)
 MOVT	R0, #hi_addr(_battery_change_count+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,77 :: 		battery_chosen = 1;
+;interruptUart6.c,78 :: 		battery_chosen = 1;
 MOVS	R1, #1
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,79 :: 		}
+;interruptUart6.c,80 :: 		}
 IT	AL
-BAL	L_interruptLora23
-L_interruptLora22:
-;interruptUart6.c,81 :: 		uart4Battery1TurnedOff();
+BAL	L_interruptLora24
+L_interruptLora23:
+;interruptUart6.c,82 :: 		uart4Battery1TurnedOff();
 BL	_uart4Battery1TurnedOff+0
-;interruptUart6.c,82 :: 		wannaBeActiveBattery1_old = 0;
+;interruptUart6.c,83 :: 		wannaBeActiveBattery1_old = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,83 :: 		wannaBeActiveBattery1 = 0;
+;interruptUart6.c,84 :: 		wannaBeActiveBattery1 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,85 :: 		battery_change_continue = 0;
+;interruptUart6.c,86 :: 		battery_change_continue = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_battery_change_continue+0)
 MOVT	R0, #hi_addr(_battery_change_continue+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,86 :: 		battery_change = 0;
+;interruptUart6.c,87 :: 		battery_change = 0;
 MOVW	R0, #lo_addr(_battery_change+0)
 MOVT	R0, #hi_addr(_battery_change+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,87 :: 		battery_change_count = 0;
+;interruptUart6.c,88 :: 		battery_change_count = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_change_count+0)
 MOVT	R0, #hi_addr(_battery_change_count+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,88 :: 		battery_chosen = 0;
+;interruptUart6.c,89 :: 		battery_chosen = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,89 :: 		}
-L_interruptLora23:
-;interruptUart6.c,91 :: 		}
-L_interruptLora21:
-;interruptUart6.c,94 :: 		if(uart_receive6[4] & 0x10){
+;interruptUart6.c,90 :: 		}
+L_interruptLora24:
+;interruptUart6.c,92 :: 		}
+L_interruptLora22:
+;interruptUart6.c,96 :: 		if(uart_receive6[4] & 0x10){
 MOVW	R0, #lo_addr(_uart_receive6+4)
 MOVT	R0, #hi_addr(_uart_receive6+4)
 LDRB	R0, [R0, #0]
@@ -345,103 +352,105 @@ AND	R0, R0, #16
 UXTB	R0, R0
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora24
-;interruptUart6.c,95 :: 		if(wannaBeActiveBattery2_old==0){
+BEQ	L_interruptLora25
+;interruptUart6.c,97 :: 		if(wannaBeActiveBattery2_old==0){
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptLora25
-;interruptUart6.c,96 :: 		uart4Battery1TurnedOff();
+BNE	L_interruptLora26
+;interruptUart6.c,98 :: 		uart4Battery1TurnedOff();
 BL	_uart4Battery1TurnedOff+0
-;interruptUart6.c,97 :: 		wannaBeActiveBattery1_old = 0;
+;interruptUart6.c,99 :: 		wannaBeActiveBattery1_old = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,98 :: 		wannaBeActiveBattery1 = 0;
+;interruptUart6.c,100 :: 		wannaBeActiveBattery1 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,100 :: 		uart4Battery2TurnedOn();
+;interruptUart6.c,102 :: 		uart4Battery2TurnedOn();
 BL	_uart4Battery2TurnedOn+0
-;interruptUart6.c,101 :: 		wannaBeActiveBattery2_old = 1;
+;interruptUart6.c,103 :: 		wannaBeActiveBattery2_old = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,102 :: 		wannaBeActiveBattery2 = 1;
+;interruptUart6.c,104 :: 		wannaBeActiveBattery2 = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,104 :: 		battery_change_continue = 0;
+;interruptUart6.c,106 :: 		battery_change_continue = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_battery_change_continue+0)
 MOVT	R0, #hi_addr(_battery_change_continue+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,105 :: 		battery_change = 0;
+;interruptUart6.c,107 :: 		battery_change = 0;
 MOVW	R0, #lo_addr(_battery_change+0)
 MOVT	R0, #hi_addr(_battery_change+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,106 :: 		battery_change_count = 0;
+;interruptUart6.c,108 :: 		battery_change_count = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_change_count+0)
 MOVT	R0, #hi_addr(_battery_change_count+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,107 :: 		battery_chosen = 2;
+;interruptUart6.c,109 :: 		battery_chosen = 2;
 MOVS	R1, #2
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,109 :: 		}
+;interruptUart6.c,111 :: 		}
 IT	AL
-BAL	L_interruptLora26
-L_interruptLora25:
-;interruptUart6.c,111 :: 		uart4Battery2TurnedOff();
+BAL	L_interruptLora27
+L_interruptLora26:
+;interruptUart6.c,113 :: 		uart4Battery2TurnedOff();
 BL	_uart4Battery2TurnedOff+0
-;interruptUart6.c,112 :: 		wannaBeActiveBattery2_old = 0;
+;interruptUart6.c,114 :: 		wannaBeActiveBattery2_old = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,113 :: 		wannaBeActiveBattery2 = 0;
+;interruptUart6.c,115 :: 		wannaBeActiveBattery2 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,115 :: 		battery_change_continue = 0;
+;interruptUart6.c,117 :: 		battery_change_continue = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_battery_change_continue+0)
 MOVT	R0, #hi_addr(_battery_change_continue+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,116 :: 		battery_change = 0;
+;interruptUart6.c,118 :: 		battery_change = 0;
 MOVW	R0, #lo_addr(_battery_change+0)
 MOVT	R0, #hi_addr(_battery_change+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,117 :: 		battery_change_count = 0;
+;interruptUart6.c,119 :: 		battery_change_count = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_change_count+0)
 MOVT	R0, #hi_addr(_battery_change_count+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,118 :: 		battery_chosen = 0;
+;interruptUart6.c,120 :: 		battery_chosen = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,119 :: 		}
-L_interruptLora26:
 ;interruptUart6.c,121 :: 		}
-L_interruptLora24:
-;interruptUart6.c,125 :: 		if(uart_receive6[4] & 0x01 == 0x01){
+L_interruptLora27:
+;interruptUart6.c,123 :: 		}
+L_interruptLora25:
+;interruptUart6.c,124 :: 		}
+L_interruptLora21:
+;interruptUart6.c,128 :: 		if(uart_receive6[4] & 0x01 == 0x01){
 MOVW	R0, #lo_addr(_uart_receive6+4)
 MOVT	R0, #hi_addr(_uart_receive6+4)
 LDRB	R0, [R0, #0]
@@ -449,274 +458,274 @@ AND	R0, R0, #1
 UXTB	R0, R0
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora27
-;interruptUart6.c,126 :: 		control_taken = 1;
+BEQ	L_interruptLora28
+;interruptUart6.c,129 :: 		control_taken = 1;
 MOVS	R1, #1
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_control_taken+0)
 MOVT	R0, #hi_addr(_control_taken+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,127 :: 		bitControlTaken = 1;
+;interruptUart6.c,130 :: 		bitControlTaken = 1;
 MOVW	R0, #lo_addr(_bitControlTaken+0)
 MOVT	R0, #hi_addr(_bitControlTaken+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,128 :: 		controlTakenCount = 0;
+;interruptUart6.c,131 :: 		controlTakenCount = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_controlTakenCount+0)
 MOVT	R0, #hi_addr(_controlTakenCount+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,129 :: 		countJoystickConnection = 0;
+;interruptUart6.c,132 :: 		countJoystickConnection = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_countJoystickConnection+0)
 MOVT	R0, #hi_addr(_countJoystickConnection+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,130 :: 		bitCheckJoystick = 0;
+;interruptUart6.c,133 :: 		bitCheckJoystick = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_bitCheckJoystick+0)
 MOVT	R0, #hi_addr(_bitCheckJoystick+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,131 :: 		}
+;interruptUart6.c,134 :: 		}
 IT	AL
-BAL	L_interruptLora28
-L_interruptLora27:
-;interruptUart6.c,133 :: 		control_taken = 0;
+BAL	L_interruptLora29
+L_interruptLora28:
+;interruptUart6.c,136 :: 		control_taken = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_control_taken+0)
 MOVT	R0, #hi_addr(_control_taken+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,134 :: 		bitControlTaken = 0;
+;interruptUart6.c,137 :: 		bitControlTaken = 0;
 MOVW	R0, #lo_addr(_bitControlTaken+0)
 MOVT	R0, #hi_addr(_bitControlTaken+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,135 :: 		controlTakenCount = 0;
+;interruptUart6.c,138 :: 		controlTakenCount = 0;
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_controlTakenCount+0)
 MOVT	R0, #hi_addr(_controlTakenCount+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,136 :: 		}
-L_interruptLora28:
-;interruptUart6.c,138 :: 		switch(uart_receive6[3] & 0x07){
+;interruptUart6.c,139 :: 		}
+L_interruptLora29:
+;interruptUart6.c,141 :: 		switch(uart_receive6[3] & 0x07){
 MOVW	R0, #lo_addr(_uart_receive6+3)
 MOVT	R0, #hi_addr(_uart_receive6+3)
 LDRB	R0, [R0, #0]
 AND	R2, R0, #7
 UXTB	R2, R2
 IT	AL
-BAL	L_interruptLora29
-;interruptUart6.c,139 :: 		case 1:
-L_interruptLora31:
-;interruptUart6.c,144 :: 		if(control_taken){
+BAL	L_interruptLora30
+;interruptUart6.c,142 :: 		case 1:
+L_interruptLora32:
+;interruptUart6.c,147 :: 		if(control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora32
-;interruptUart6.c,145 :: 		gear_status = 1;
+BEQ	L_interruptLora33
+;interruptUart6.c,148 :: 		gear_status = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_gear_status+0)
 MOVT	R0, #hi_addr(_gear_status+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,146 :: 		}
-L_interruptLora32:
-;interruptUart6.c,148 :: 		break;
-IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,149 :: 		case 2:
+;interruptUart6.c,149 :: 		}
 L_interruptLora33:
-;interruptUart6.c,154 :: 		if(control_taken){
+;interruptUart6.c,151 :: 		break;
+IT	AL
+BAL	L_interruptLora31
+;interruptUart6.c,152 :: 		case 2:
+L_interruptLora34:
+;interruptUart6.c,157 :: 		if(control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora34
-;interruptUart6.c,155 :: 		gear_status = 2;
+BEQ	L_interruptLora35
+;interruptUart6.c,158 :: 		gear_status = 2;
 MOVS	R1, #2
 MOVW	R0, #lo_addr(_gear_status+0)
 MOVT	R0, #hi_addr(_gear_status+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,156 :: 		}
-L_interruptLora34:
-;interruptUart6.c,158 :: 		break;
-IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,159 :: 		case 3:
+;interruptUart6.c,159 :: 		}
 L_interruptLora35:
-;interruptUart6.c,164 :: 		if(control_taken){
+;interruptUart6.c,161 :: 		break;
+IT	AL
+BAL	L_interruptLora31
+;interruptUart6.c,162 :: 		case 3:
+L_interruptLora36:
+;interruptUart6.c,167 :: 		if(control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora36
-;interruptUart6.c,165 :: 		gear_status = 3;
+BEQ	L_interruptLora37
+;interruptUart6.c,168 :: 		gear_status = 3;
 MOVS	R1, #3
 MOVW	R0, #lo_addr(_gear_status+0)
 MOVT	R0, #hi_addr(_gear_status+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,166 :: 		}
-L_interruptLora36:
-;interruptUart6.c,168 :: 		break;
-IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,169 :: 		case 4:
+;interruptUart6.c,169 :: 		}
 L_interruptLora37:
-;interruptUart6.c,174 :: 		if(control_taken){
+;interruptUart6.c,171 :: 		break;
+IT	AL
+BAL	L_interruptLora31
+;interruptUart6.c,172 :: 		case 4:
+L_interruptLora38:
+;interruptUart6.c,177 :: 		if(control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora38
-;interruptUart6.c,175 :: 		gear_status = 4;
+BEQ	L_interruptLora39
+;interruptUart6.c,178 :: 		gear_status = 4;
 MOVS	R1, #4
 MOVW	R0, #lo_addr(_gear_status+0)
 MOVT	R0, #hi_addr(_gear_status+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,176 :: 		}
-L_interruptLora38:
-;interruptUart6.c,177 :: 		stopGearBit = 1;
+;interruptUart6.c,179 :: 		}
+L_interruptLora39:
+;interruptUart6.c,180 :: 		stopGearBit = 1;
 MOVS	R1, #1
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_stopGearBit+0)
 MOVT	R0, #hi_addr(_stopGearBit+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,179 :: 		break;
+;interruptUart6.c,182 :: 		break;
 IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,180 :: 		case 5:
-L_interruptLora39:
-;interruptUart6.c,185 :: 		if(control_taken){
+BAL	L_interruptLora31
+;interruptUart6.c,183 :: 		case 5:
+L_interruptLora40:
+;interruptUart6.c,188 :: 		if(control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora40
-;interruptUart6.c,186 :: 		gear_status = 5;
+BEQ	L_interruptLora41
+;interruptUart6.c,189 :: 		gear_status = 5;
 MOVS	R1, #5
 MOVW	R0, #lo_addr(_gear_status+0)
 MOVT	R0, #hi_addr(_gear_status+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,187 :: 		}
-L_interruptLora40:
-;interruptUart6.c,189 :: 		break;
-IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,190 :: 		default:
+;interruptUart6.c,190 :: 		}
 L_interruptLora41:
-;interruptUart6.c,191 :: 		gear_status = gear_status;
 ;interruptUart6.c,192 :: 		break;
 IT	AL
-BAL	L_interruptLora30
-;interruptUart6.c,193 :: 		}
-L_interruptLora29:
+BAL	L_interruptLora31
+;interruptUart6.c,193 :: 		default:
+L_interruptLora42:
+;interruptUart6.c,194 :: 		gear_status = gear_status;
+;interruptUart6.c,195 :: 		break;
+IT	AL
+BAL	L_interruptLora31
+;interruptUart6.c,196 :: 		}
+L_interruptLora30:
 CMP	R2, #1
 IT	EQ
-BEQ	L_interruptLora31
+BEQ	L_interruptLora32
 CMP	R2, #2
 IT	EQ
-BEQ	L_interruptLora33
+BEQ	L_interruptLora34
 CMP	R2, #3
 IT	EQ
-BEQ	L_interruptLora35
+BEQ	L_interruptLora36
 CMP	R2, #4
 IT	EQ
-BEQ	L_interruptLora37
+BEQ	L_interruptLora38
 CMP	R2, #5
 IT	EQ
-BEQ	L_interruptLora39
+BEQ	L_interruptLora40
 IT	AL
-BAL	L_interruptLora41
-L_interruptLora30:
-;interruptUart6.c,195 :: 		switch(uart_receive6[3] & 0x38){
+BAL	L_interruptLora42
+L_interruptLora31:
+;interruptUart6.c,198 :: 		switch(uart_receive6[3] & 0x38){
 MOVW	R0, #lo_addr(_uart_receive6+3)
 MOVT	R0, #hi_addr(_uart_receive6+3)
 LDRB	R0, [R0, #0]
 AND	R0, R0, #56
 STRB	R0, [SP, #4]
 IT	AL
-BAL	L_interruptLora42
-;interruptUart6.c,197 :: 		case 0x08:
-L_interruptLora44:
-;interruptUart6.c,198 :: 		velocity_mode_save = VELOCITY_TURTLE;
+BAL	L_interruptLora43
+;interruptUart6.c,200 :: 		case 0x08:
+L_interruptLora45:
+;interruptUart6.c,201 :: 		velocity_mode_save = VELOCITY_TURTLE;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_velocity_mode_save+0)
 MOVT	R0, #hi_addr(_velocity_mode_save+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,199 :: 		velocity_mode = VELOCITY_TURTLE;
+;interruptUart6.c,202 :: 		velocity_mode = VELOCITY_TURTLE;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,200 :: 		change_velocity_mode(velocity_mode);
+;interruptUart6.c,203 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #0
 BL	_change_velocity_mode+0
-;interruptUart6.c,201 :: 		break;
+;interruptUart6.c,204 :: 		break;
 IT	AL
-BAL	L_interruptLora43
-;interruptUart6.c,203 :: 		case 0x10:
-L_interruptLora45:
-;interruptUart6.c,204 :: 		velocity_mode_save = VELOCITY_RABBIT;
+BAL	L_interruptLora44
+;interruptUart6.c,206 :: 		case 0x10:
+L_interruptLora46:
+;interruptUart6.c,207 :: 		velocity_mode_save = VELOCITY_RABBIT;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_velocity_mode_save+0)
 MOVT	R0, #hi_addr(_velocity_mode_save+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,205 :: 		velocity_mode = VELOCITY_RABBIT;
+;interruptUart6.c,208 :: 		velocity_mode = VELOCITY_RABBIT;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,206 :: 		change_velocity_mode(velocity_mode);
+;interruptUart6.c,209 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #1
 BL	_change_velocity_mode+0
-;interruptUart6.c,207 :: 		break;
+;interruptUart6.c,210 :: 		break;
 IT	AL
-BAL	L_interruptLora43
-;interruptUart6.c,209 :: 		case 0x20:
-L_interruptLora46:
-;interruptUart6.c,210 :: 		velocity_mode_save = VELOCITY_LEOPARD;
+BAL	L_interruptLora44
+;interruptUart6.c,212 :: 		case 0x20:
+L_interruptLora47:
+;interruptUart6.c,213 :: 		velocity_mode_save = VELOCITY_LEOPARD;
 MOVS	R1, #2
 MOVW	R0, #lo_addr(_velocity_mode_save+0)
 MOVT	R0, #hi_addr(_velocity_mode_save+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,211 :: 		velocity_mode = VELOCITY_LEOPARD;
+;interruptUart6.c,214 :: 		velocity_mode = VELOCITY_LEOPARD;
 MOVS	R1, #2
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,212 :: 		change_velocity_mode(velocity_mode);
+;interruptUart6.c,215 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #2
 BL	_change_velocity_mode+0
-;interruptUart6.c,213 :: 		break;
-IT	AL
-BAL	L_interruptLora43
-;interruptUart6.c,215 :: 		default:
-L_interruptLora47:
 ;interruptUart6.c,216 :: 		break;
 IT	AL
-BAL	L_interruptLora43
-;interruptUart6.c,218 :: 		}
-L_interruptLora42:
+BAL	L_interruptLora44
+;interruptUart6.c,218 :: 		default:
+L_interruptLora48:
+;interruptUart6.c,219 :: 		break;
+IT	AL
+BAL	L_interruptLora44
+;interruptUart6.c,221 :: 		}
+L_interruptLora43:
 LDRB	R0, [SP, #4]
 CMP	R0, #8
 IT	EQ
-BEQ	L_interruptLora44
+BEQ	L_interruptLora45
 CMP	R0, #16
 IT	EQ
-BEQ	L_interruptLora45
+BEQ	L_interruptLora46
 CMP	R0, #32
 IT	EQ
-BEQ	L_interruptLora46
+BEQ	L_interruptLora47
 IT	AL
-BAL	L_interruptLora47
-L_interruptLora43:
-;interruptUart6.c,220 :: 		boatWheelDir = uart_receive6[2];
+BAL	L_interruptLora48
+L_interruptLora44:
+;interruptUart6.c,223 :: 		boatWheelDir = uart_receive6[2];
 MOVW	R0, #lo_addr(_uart_receive6+2)
 MOVT	R0, #hi_addr(_uart_receive6+2)
 LDRB	R1, [R0, #0]
@@ -724,22 +733,22 @@ MOVW	R0, #lo_addr(_boatWheelDir+0)
 MOVT	R0, #hi_addr(_boatWheelDir+0)
 STRB	R1, [R0, #0]
 ;interruptUart6.c,34 :: 		if((uart_receive6[0]==0x21)&&(uart_receive6[1]==0xC0)&&(uart_receive6[6] = 0x3B)){
+L__interruptLora68:
 L__interruptLora67:
-L__interruptLora66:
-;interruptUart6.c,227 :: 		for(i=0; i<12; i++){
+;interruptUart6.c,230 :: 		for(i=0; i<12; i++){
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 STRH	R1, [R0, #0]
-L_interruptLora48:
+L_interruptLora49:
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 LDRSH	R0, [R0, #0]
 CMP	R0, #12
 IT	GE
-BGE	L_interruptLora49
-;interruptUart6.c,228 :: 		uart_receive6[i] = 0;
+BGE	L_interruptLora50
+;interruptUart6.c,231 :: 		uart_receive6[i] = 0;
 MOVW	R2, #lo_addr(_i+0)
 MOVT	R2, #hi_addr(_i+0)
 LDRSH	R1, [R2, #0]
@@ -748,29 +757,29 @@ MOVT	R0, #hi_addr(_uart_receive6+0)
 ADDS	R1, R0, R1
 MOVS	R0, #0
 STRB	R0, [R1, #0]
-;interruptUart6.c,227 :: 		for(i=0; i<12; i++){
+;interruptUart6.c,230 :: 		for(i=0; i<12; i++){
 MOV	R0, R2
 LDRSH	R0, [R0, #0]
 ADDS	R0, R0, #1
 STRH	R0, [R2, #0]
-;interruptUart6.c,229 :: 		}
+;interruptUart6.c,232 :: 		}
 IT	AL
-BAL	L_interruptLora48
-L_interruptLora49:
+BAL	L_interruptLora49
+L_interruptLora50:
 ;interruptUart6.c,22 :: 		else if((receive6 == 0x3B)&&(startReceivingData6)&&(uart_count6 + 1 == uartLength6)){
+L__interruptLora71:
 L__interruptLora70:
 L__interruptLora69:
-L__interruptLora68:
-;interruptUart6.c,234 :: 		}
+;interruptUart6.c,237 :: 		}
 L_interruptLora6:
-;interruptUart6.c,237 :: 		if(startReceivingData6 == 1){
+;interruptUart6.c,240 :: 		if(startReceivingData6 == 1){
 MOVW	R1, #lo_addr(_startReceivingData6+0)
 MOVT	R1, #hi_addr(_startReceivingData6+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptLora51
-;interruptUart6.c,238 :: 		uart_receive6[uart_count6] = receive6;
+BEQ	L_interruptLora52
+;interruptUart6.c,241 :: 		uart_receive6[uart_count6] = receive6;
 MOVW	R2, #lo_addr(_uart_count6+0)
 MOVT	R2, #hi_addr(_uart_count6+0)
 LDRH	R1, [R2, #0]
@@ -781,77 +790,77 @@ MOVW	R0, #lo_addr(_receive6+0)
 MOVT	R0, #hi_addr(_receive6+0)
 LDRB	R0, [R0, #0]
 STRB	R0, [R1, #0]
-;interruptUart6.c,239 :: 		uart_count6++;
+;interruptUart6.c,242 :: 		uart_count6++;
 MOV	R0, R2
 LDRH	R0, [R0, #0]
 ADDS	R0, R0, #1
 UXTH	R0, R0
 STRH	R0, [R2, #0]
-;interruptUart6.c,241 :: 		if(uart_count6 == 2)
+;interruptUart6.c,244 :: 		if(uart_count6 == 2)
 CMP	R0, #2
 IT	NE
-BNE	L_interruptLora52
-;interruptUart6.c,243 :: 		switch (uart_receive6[1])
+BNE	L_interruptLora53
+;interruptUart6.c,246 :: 		switch (uart_receive6[1])
 IT	AL
-BAL	L_interruptLora53
-;interruptUart6.c,245 :: 		case 0xC0:
-L_interruptLora55:
-;interruptUart6.c,246 :: 		uartLength6 = 7;
+BAL	L_interruptLora54
+;interruptUart6.c,248 :: 		case 0xC0:
+L_interruptLora56:
+;interruptUart6.c,249 :: 		uartLength6 = 7;
 MOVS	R1, #7
 MOVW	R0, #lo_addr(_uartLength6+0)
 MOVT	R0, #hi_addr(_uartLength6+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,247 :: 		break;
+;interruptUart6.c,250 :: 		break;
 IT	AL
-BAL	L_interruptLora54
-;interruptUart6.c,248 :: 		}
-L_interruptLora53:
+BAL	L_interruptLora55
+;interruptUart6.c,251 :: 		}
+L_interruptLora54:
 MOVW	R0, #lo_addr(_uart_receive6+1)
 MOVT	R0, #hi_addr(_uart_receive6+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #192
 IT	EQ
-BEQ	L_interruptLora55
-L_interruptLora54:
-;interruptUart6.c,249 :: 		}
-L_interruptLora52:
-;interruptUart6.c,251 :: 		if(uart_count6 > 11){
+BEQ	L_interruptLora56
+L_interruptLora55:
+;interruptUart6.c,252 :: 		}
+L_interruptLora53:
+;interruptUart6.c,254 :: 		if(uart_count6 > 11){
 MOVW	R0, #lo_addr(_uart_count6+0)
 MOVT	R0, #hi_addr(_uart_count6+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #11
 IT	LS
-BLS	L_interruptLora56
-;interruptUart6.c,252 :: 		uart_count6 = 0;
+BLS	L_interruptLora57
+;interruptUart6.c,255 :: 		uart_count6 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_uart_count6+0)
 MOVT	R0, #hi_addr(_uart_count6+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,253 :: 		uartLength6 = 0;
+;interruptUart6.c,256 :: 		uartLength6 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_uartLength6+0)
 MOVT	R0, #hi_addr(_uartLength6+0)
 STRH	R1, [R0, #0]
-;interruptUart6.c,254 :: 		startReceivingData6 = 0;
+;interruptUart6.c,257 :: 		startReceivingData6 = 0;
 MOVS	R1, #0
 SXTB	R1, R1
 MOVW	R0, #lo_addr(_startReceivingData6+0)
 MOVT	R0, #hi_addr(_startReceivingData6+0)
 STR	R1, [R0, #0]
-;interruptUart6.c,255 :: 		for(i=0; i<12; i++){
+;interruptUart6.c,258 :: 		for(i=0; i<12; i++){
 MOVS	R1, #0
 SXTH	R1, R1
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 STRH	R1, [R0, #0]
-L_interruptLora57:
+L_interruptLora58:
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 LDRSH	R0, [R0, #0]
 CMP	R0, #12
 IT	GE
-BGE	L_interruptLora58
-;interruptUart6.c,256 :: 		uart_receive6[i] = 0;
+BGE	L_interruptLora59
+;interruptUart6.c,259 :: 		uart_receive6[i] = 0;
 MOVW	R2, #lo_addr(_i+0)
 MOVT	R2, #hi_addr(_i+0)
 LDRSH	R1, [R2, #0]
@@ -860,20 +869,20 @@ MOVT	R0, #hi_addr(_uart_receive6+0)
 ADDS	R1, R0, R1
 MOVS	R0, #0
 STRB	R0, [R1, #0]
-;interruptUart6.c,255 :: 		for(i=0; i<12; i++){
+;interruptUart6.c,258 :: 		for(i=0; i<12; i++){
 MOV	R0, R2
 LDRSH	R0, [R0, #0]
 ADDS	R0, R0, #1
 STRH	R0, [R2, #0]
-;interruptUart6.c,257 :: 		}
+;interruptUart6.c,260 :: 		}
 IT	AL
-BAL	L_interruptLora57
-L_interruptLora58:
-;interruptUart6.c,258 :: 		}
-L_interruptLora56:
-;interruptUart6.c,259 :: 		}
-L_interruptLora51:
+BAL	L_interruptLora58
+L_interruptLora59:
+;interruptUart6.c,261 :: 		}
+L_interruptLora57:
 ;interruptUart6.c,262 :: 		}
+L_interruptLora52:
+;interruptUart6.c,265 :: 		}
 L_end_interruptLora:
 LDR	LR, [SP, #0]
 ADD	SP, SP, #8

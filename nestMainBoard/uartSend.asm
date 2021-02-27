@@ -97,7 +97,7 @@ BL	_UART6_Write+0
 MOVS	R0, #48
 BL	_UART6_Write+0
 ;uartSend.c,31 :: 		UART6_Write(FREQUENCY);
-MOVS	R0, #23
+MOVS	R0, #0
 BL	_UART6_Write+0
 ;uartSend.c,33 :: 		UART6_Write(0x21);
 MOVS	R0, #33

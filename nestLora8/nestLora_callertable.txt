@@ -1,0 +1,34 @@
+main
+	NVIC_IntEnable
+	__CC2DW
+	__FillZeros
+	UART2_Init_Advanced
+		UARTx_Init_Advanced
+			RCC_GetClocksFrequency
+				Get_Fosc_kHz
+			GPIO_Alternate_Function_Enable
+				GPIO_Config_Pin_Alternate_Function
+					GPIO_Config
+						GPIO_Clk_Enable
+	UART3_Init_Advanced
+		UARTx_Init_Advanced
+	GPIO_Digital_Output
+		GPIO_Config
+	GPIO_Config
+	InitTimer2
+		NVIC_IntEnable
+	setup_IWDG
+	uartRequestStatusFromBoat
+		UART2_Write
+			UARTx_Write
+	sendRequestStatusToAndroid
+		UART3_Write
+			UARTx_Write
+Timer2_interrupt
+	sendRequestStatusToAndroid
+interruptUart3
+	UART3_Read
+		UARTx_Read
+interruptUart2
+	UART2_Read
+		UARTx_Read

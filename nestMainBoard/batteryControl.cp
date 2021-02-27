@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryControl.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
-#line 99 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryControl.c"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -246,19 +246,22 @@ extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
 
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
+
 
 
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/crc.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/crc.h"
 
 unsigned int ModRTU_CRC(char buf[], int len);
 unsigned short ModRTU_CRC_Hb(char buf[], int len);
 unsigned short ModRTU_CRC_Lb(char buf[], int len);
 
 unsigned short crc8(unsigned short dir, unsigned short speed);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/uartsend.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -316,9 +319,9 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 5 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryControl.c"
+#line 5 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryControl.c"
 void batteryControlSwitches(){
-#line 73 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryControl.c"
+#line 73 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryControl.c"
  if(((battery_percentage1 < 1.0f && battery_chosen == 1)
  || (battery_percentage2 < 1.0f && battery_chosen == 2))
  || ((battery_chosen == 1 && !ACCUMULATOR_SENSE && !battery_change) || (battery_chosen == 2 && !ACCUMULATOR_SENSE && !battery_change)))

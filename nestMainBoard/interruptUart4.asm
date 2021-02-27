@@ -11,20 +11,20 @@ STRB	R0, [R1, #0]
 UXTB	R0, R0
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay121
+BNE	L__interruptDisplay127
 MOVW	R0, #lo_addr(_rcv_count_helper4+0)
 MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay120
+BNE	L__interruptDisplay126
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay119
-L__interruptDisplay118:
+BNE	L__interruptDisplay125
+L__interruptDisplay124:
 ;interruptUart4.c,12 :: 		rcv_helper4[0] = receive4;
 MOVW	R0, #lo_addr(_receive4+0)
 MOVT	R0, #hi_addr(_receive4+0)
@@ -41,29 +41,29 @@ STRB	R1, [R0, #0]
 IT	AL
 BAL	L_interruptDisplay3
 ;interruptUart4.c,11 :: 		if (receive4 == 0x5A && rcv_count_helper4 == 0 && startReceivingData4 == 0x00) {
-L__interruptDisplay121:
-L__interruptDisplay120:
-L__interruptDisplay119:
+L__interruptDisplay127:
+L__interruptDisplay126:
+L__interruptDisplay125:
 ;interruptUart4.c,15 :: 		else if (receive4 == 0xA5 && rcv_count_helper4 == 1 && startReceivingData4 == 0x00) {
 MOVW	R0, #lo_addr(_receive4+0)
 MOVT	R0, #hi_addr(_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay124
+BNE	L__interruptDisplay130
 MOVW	R0, #lo_addr(_rcv_count_helper4+0)
 MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay123
+BNE	L__interruptDisplay129
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay122
-L__interruptDisplay117:
+BNE	L__interruptDisplay128
+L__interruptDisplay123:
 ;interruptUart4.c,16 :: 		rcv_helper4[1] = receive4;
 MOVW	R0, #lo_addr(_receive4+0)
 MOVT	R0, #hi_addr(_receive4+0)
@@ -86,23 +86,23 @@ STR	R1, [R0, #0]
 IT	AL
 BAL	L_interruptDisplay7
 ;interruptUart4.c,15 :: 		else if (receive4 == 0xA5 && rcv_count_helper4 == 1 && startReceivingData4 == 0x00) {
-L__interruptDisplay124:
-L__interruptDisplay123:
-L__interruptDisplay122:
+L__interruptDisplay130:
+L__interruptDisplay129:
+L__interruptDisplay128:
 ;interruptUart4.c,20 :: 		else if (rcv_count_helper4 != 2 && startReceivingData4 == 0x00) {
 MOVW	R0, #lo_addr(_rcv_count_helper4+0)
 MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #2
 IT	EQ
-BEQ	L__interruptDisplay126
+BEQ	L__interruptDisplay132
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay125
-L__interruptDisplay116:
+BNE	L__interruptDisplay131
+L__interruptDisplay122:
 ;interruptUart4.c,21 :: 		rcv_helper4[0] = 0x00;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_rcv_helper4+0)
@@ -127,22 +127,22 @@ STRH	R1, [R0, #0]
 IT	AL
 BAL	L_interruptDisplay11
 ;interruptUart4.c,20 :: 		else if (rcv_count_helper4 != 2 && startReceivingData4 == 0x00) {
-L__interruptDisplay126:
-L__interruptDisplay125:
+L__interruptDisplay132:
+L__interruptDisplay131:
 ;interruptUart4.c,26 :: 		else if (rcv_count_helper4 == 2 && startReceivingData4 == 0x01) {
 MOVW	R0, #lo_addr(_rcv_count_helper4+0)
 MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #2
 IT	NE
-BNE	L__interruptDisplay128
+BNE	L__interruptDisplay134
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L__interruptDisplay127
-L__interruptDisplay115:
+BEQ	L__interruptDisplay133
+L__interruptDisplay121:
 ;interruptUart4.c,27 :: 		uart_receive4[0] = rcv_helper4[0];
 MOVW	R3, #lo_addr(_rcv_helper4+0)
 MOVT	R3, #hi_addr(_rcv_helper4+0)
@@ -255,21 +255,21 @@ L_interruptDisplay15:
 IT	AL
 BAL	L_interruptDisplay19
 ;interruptUart4.c,26 :: 		else if (rcv_count_helper4 == 2 && startReceivingData4 == 0x01) {
-L__interruptDisplay128:
-L__interruptDisplay127:
+L__interruptDisplay134:
+L__interruptDisplay133:
 ;interruptUart4.c,48 :: 		else if (rcv_count_helper4 == 0 && startReceivingData4 == 0x01 && uart_count4 < uart_receive4[2] + 3) {
 MOVW	R0, #lo_addr(_rcv_count_helper4+0)
 MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay131
+BNE	L__interruptDisplay137
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L__interruptDisplay130
+BEQ	L__interruptDisplay136
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
@@ -280,8 +280,8 @@ MOVT	R0, #hi_addr(_uart_count4+0)
 LDRH	R0, [R0, #0]
 CMP	R0, R1
 IT	CS
-BCS	L__interruptDisplay129
-L__interruptDisplay114:
+BCS	L__interruptDisplay135
+L__interruptDisplay120:
 ;interruptUart4.c,49 :: 		uart_receive4[uart_count4] = receive4;
 MOVW	R2, #lo_addr(_uart_count4+0)
 MOVT	R2, #hi_addr(_uart_count4+0)
@@ -299,9 +299,9 @@ LDRH	R0, [R0, #0]
 ADDS	R0, R0, #1
 STRH	R0, [R2, #0]
 ;interruptUart4.c,48 :: 		else if (rcv_count_helper4 == 0 && startReceivingData4 == 0x01 && uart_count4 < uart_receive4[2] + 3) {
-L__interruptDisplay131:
-L__interruptDisplay130:
-L__interruptDisplay129:
+L__interruptDisplay137:
+L__interruptDisplay136:
+L__interruptDisplay135:
 ;interruptUart4.c,51 :: 		}
 L_interruptDisplay19:
 L_interruptDisplay11:
@@ -313,13 +313,13 @@ MOVT	R0, #hi_addr(_rcv_count_helper4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay190
+BNE	L__interruptDisplay200
 MOVW	R1, #lo_addr(_startReceivingData4+0)
 MOVT	R1, #hi_addr(_startReceivingData4+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L__interruptDisplay189
+BEQ	L__interruptDisplay199
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
@@ -330,61 +330,61 @@ MOVT	R0, #hi_addr(_uart_count4+0)
 LDRH	R0, [R0, #0]
 CMP	R0, R1
 IT	CC
-BCC	L__interruptDisplay188
-L__interruptDisplay113:
+BCC	L__interruptDisplay198
+L__interruptDisplay119:
 ;interruptUart4.c,54 :: 		if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay139
+BNE	L__interruptDisplay145
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay138
+BNE	L__interruptDisplay144
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay137
+BNE	L__interruptDisplay143
 ;interruptUart4.c,55 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay136
+BNE	L__interruptDisplay142
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #22
 IT	NE
-BNE	L__interruptDisplay135
+BNE	L__interruptDisplay141
 ;interruptUart4.c,56 :: 		&& uart_receive4[5] == 0x00 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay134
+BNE	L__interruptDisplay140
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay133
+BNE	L__interruptDisplay139
 ;interruptUart4.c,57 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay132
-L__interruptDisplay112:
+BNE	L__interruptDisplay138
+L__interruptDisplay118:
 ;interruptUart4.c,59 :: 		if(!control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
@@ -450,70 +450,70 @@ L_interruptDisplay32:
 IT	AL
 BAL	L_interruptDisplay35
 ;interruptUart4.c,54 :: 		if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay139:
-L__interruptDisplay138:
-L__interruptDisplay137:
+L__interruptDisplay145:
+L__interruptDisplay144:
+L__interruptDisplay143:
 ;interruptUart4.c,55 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
-L__interruptDisplay136:
-L__interruptDisplay135:
+L__interruptDisplay142:
+L__interruptDisplay141:
 ;interruptUart4.c,56 :: 		&& uart_receive4[5] == 0x00 && uart_receive4[6] == 0x01
-L__interruptDisplay134:
-L__interruptDisplay133:
+L__interruptDisplay140:
+L__interruptDisplay139:
 ;interruptUart4.c,57 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay132:
+L__interruptDisplay138:
 ;interruptUart4.c,83 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay147
+BNE	L__interruptDisplay153
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay146
+BNE	L__interruptDisplay152
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay145
+BNE	L__interruptDisplay151
 ;interruptUart4.c,84 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay144
+BNE	L__interruptDisplay150
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #22
 IT	NE
-BNE	L__interruptDisplay143
+BNE	L__interruptDisplay149
 ;interruptUart4.c,85 :: 		&& uart_receive4[5] == 0x20 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #32
 IT	NE
-BNE	L__interruptDisplay142
+BNE	L__interruptDisplay148
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay141
+BNE	L__interruptDisplay147
 ;interruptUart4.c,86 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay140
-L__interruptDisplay111:
+BNE	L__interruptDisplay146
+L__interruptDisplay117:
 ;interruptUart4.c,88 :: 		if(!control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
@@ -579,84 +579,91 @@ L_interruptDisplay42:
 IT	AL
 BAL	L_interruptDisplay45
 ;interruptUart4.c,83 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay147:
-L__interruptDisplay146:
-L__interruptDisplay145:
+L__interruptDisplay153:
+L__interruptDisplay152:
+L__interruptDisplay151:
 ;interruptUart4.c,84 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
-L__interruptDisplay144:
-L__interruptDisplay143:
+L__interruptDisplay150:
+L__interruptDisplay149:
 ;interruptUart4.c,85 :: 		&& uart_receive4[5] == 0x20 && uart_receive4[6] == 0x01
-L__interruptDisplay142:
-L__interruptDisplay141:
+L__interruptDisplay148:
+L__interruptDisplay147:
 ;interruptUart4.c,86 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay140:
+L__interruptDisplay146:
 ;interruptUart4.c,109 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay155
+BNE	L__interruptDisplay163
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay154
+BNE	L__interruptDisplay162
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay153
+BNE	L__interruptDisplay161
 ;interruptUart4.c,110 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay152
+BNE	L__interruptDisplay160
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #22
 IT	NE
-BNE	L__interruptDisplay151
+BNE	L__interruptDisplay159
 ;interruptUart4.c,111 :: 		&& uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #64
 IT	NE
-BNE	L__interruptDisplay150
+BNE	L__interruptDisplay158
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay149
+BNE	L__interruptDisplay157
 ;interruptUart4.c,112 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay148
-L__interruptDisplay110:
-;interruptUart4.c,114 :: 		if(!control_taken){
+BNE	L__interruptDisplay156
+L__interruptDisplay116:
+;interruptUart4.c,114 :: 		if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay49
+BNE	L__interruptDisplay155
+MOVW	R1, #lo_addr(_bitBatteryChangeBlockCounter+0)
+MOVT	R1, #hi_addr(_bitBatteryChangeBlockCounter+0)
+LDR	R0, [R1, #0]
+CMP	R0, #0
+IT	NE
+BNE	L__interruptDisplay154
+L__interruptDisplay115:
 ;interruptUart4.c,115 :: 		if (uart_receive4[8] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+8)
 MOVT	R0, #hi_addr(_uart_receive4+8)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay50
+BNE	L_interruptDisplay52
 ;interruptUart4.c,118 :: 		wannaBeActiveBattery1 = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
@@ -668,7 +675,7 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	EQ
-BEQ	L_interruptDisplay51
+BEQ	L_interruptDisplay53
 ;interruptUart4.c,120 :: 		wannaBeActiveBattery1_old = wannaBeActiveBattery1;
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1+0)
@@ -711,11 +718,11 @@ MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
 ;interruptUart4.c,130 :: 		}
-L_interruptDisplay51:
+L_interruptDisplay53:
 ;interruptUart4.c,131 :: 		}
 IT	AL
-BAL	L_interruptDisplay52
-L_interruptDisplay50:
+BAL	L_interruptDisplay54
+L_interruptDisplay52:
 ;interruptUart4.c,136 :: 		wannaBeActiveBattery1 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
@@ -727,7 +734,7 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptDisplay53
+BEQ	L_interruptDisplay55
 ;interruptUart4.c,138 :: 		wannaBeActiveBattery1_old = wannaBeActiveBattery1;
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1+0)
@@ -758,20 +765,22 @@ MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
 ;interruptUart4.c,144 :: 		}
-L_interruptDisplay53:
+L_interruptDisplay55:
 ;interruptUart4.c,145 :: 		}
-L_interruptDisplay52:
+L_interruptDisplay54:
 ;interruptUart4.c,146 :: 		}
 IT	AL
-BAL	L_interruptDisplay54
-L_interruptDisplay49:
+BAL	L_interruptDisplay56
+;interruptUart4.c,114 :: 		if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
+L__interruptDisplay155:
+L__interruptDisplay154:
 ;interruptUart4.c,148 :: 		if(wannaBeActiveBattery1_old == 1){
 MOVW	R0, #lo_addr(_wannaBeActiveBattery1_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L_interruptDisplay55
+BNE	L_interruptDisplay57
 ;interruptUart4.c,149 :: 		uart4Battery1TurnedOn();
 BL	_uart4Battery1TurnedOn+0
 ;interruptUart4.c,150 :: 		uart4Battery2TurnedOff();
@@ -780,8 +789,8 @@ BL	_uart4Battery2TurnedOff+0
 BL	_uart4LightingTurnedOn+0
 ;interruptUart4.c,152 :: 		}
 IT	AL
-BAL	L_interruptDisplay56
-L_interruptDisplay55:
+BAL	L_interruptDisplay58
+L_interruptDisplay57:
 ;interruptUart4.c,154 :: 		uart4Battery1TurnedOff();
 BL	_uart4Battery1TurnedOff+0
 ;interruptUart4.c,155 :: 		if(wannaBeActiveBattery2_old == 1){
@@ -790,107 +799,114 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L_interruptDisplay57
+BNE	L_interruptDisplay59
 ;interruptUart4.c,156 :: 		uart4Battery2TurnedOn();
 BL	_uart4Battery2TurnedOn+0
 ;interruptUart4.c,157 :: 		uart4LightingTurnedOn();
 BL	_uart4LightingTurnedOn+0
 ;interruptUart4.c,158 :: 		}
 IT	AL
-BAL	L_interruptDisplay58
-L_interruptDisplay57:
+BAL	L_interruptDisplay60
+L_interruptDisplay59:
 ;interruptUart4.c,160 :: 		uart4Battery2TurnedOff();
 BL	_uart4Battery2TurnedOff+0
 ;interruptUart4.c,161 :: 		uart4LightingTurnedOff();
 BL	_uart4LightingTurnedOff+0
 ;interruptUart4.c,162 :: 		}
-L_interruptDisplay58:
+L_interruptDisplay60:
 ;interruptUart4.c,163 :: 		}
-L_interruptDisplay56:
+L_interruptDisplay58:
 ;interruptUart4.c,164 :: 		}
-L_interruptDisplay54:
+L_interruptDisplay56:
 ;interruptUart4.c,168 :: 		}
 IT	AL
-BAL	L_interruptDisplay59
+BAL	L_interruptDisplay61
 ;interruptUart4.c,109 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay155:
-L__interruptDisplay154:
-L__interruptDisplay153:
+L__interruptDisplay163:
+L__interruptDisplay162:
+L__interruptDisplay161:
 ;interruptUart4.c,110 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
-L__interruptDisplay152:
-L__interruptDisplay151:
+L__interruptDisplay160:
+L__interruptDisplay159:
 ;interruptUart4.c,111 :: 		&& uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
-L__interruptDisplay150:
-L__interruptDisplay149:
+L__interruptDisplay158:
+L__interruptDisplay157:
 ;interruptUart4.c,112 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay148:
+L__interruptDisplay156:
 ;interruptUart4.c,169 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay163
+BNE	L__interruptDisplay173
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay162
+BNE	L__interruptDisplay172
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay161
+BNE	L__interruptDisplay171
 ;interruptUart4.c,170 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay160
+BNE	L__interruptDisplay170
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #22
 IT	NE
-BNE	L__interruptDisplay159
+BNE	L__interruptDisplay169
 ;interruptUart4.c,171 :: 		&& uart_receive4[5] == 0x60 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #96
 IT	NE
-BNE	L__interruptDisplay158
+BNE	L__interruptDisplay168
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay157
+BNE	L__interruptDisplay167
 ;interruptUart4.c,172 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay156
-L__interruptDisplay109:
-;interruptUart4.c,174 :: 		if(!control_taken){
+BNE	L__interruptDisplay166
+L__interruptDisplay114:
+;interruptUart4.c,174 :: 		if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay63
+BNE	L__interruptDisplay165
+MOVW	R1, #lo_addr(_bitBatteryChangeBlockCounter+0)
+MOVT	R1, #hi_addr(_bitBatteryChangeBlockCounter+0)
+LDR	R0, [R1, #0]
+CMP	R0, #0
+IT	NE
+BNE	L__interruptDisplay164
+L__interruptDisplay113:
 ;interruptUart4.c,175 :: 		if (uart_receive4[8] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+8)
 MOVT	R0, #hi_addr(_uart_receive4+8)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay64
+BNE	L_interruptDisplay68
 ;interruptUart4.c,177 :: 		wannaBeActiveBattery2 = 1;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
@@ -902,7 +918,7 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	EQ
-BEQ	L_interruptDisplay65
+BEQ	L_interruptDisplay69
 ;interruptUart4.c,179 :: 		wannaBeActiveBattery2_old = wannaBeActiveBattery2;
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2+0)
@@ -945,11 +961,11 @@ MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
 ;interruptUart4.c,190 :: 		}
-L_interruptDisplay65:
+L_interruptDisplay69:
 ;interruptUart4.c,191 :: 		}
 IT	AL
-BAL	L_interruptDisplay66
-L_interruptDisplay64:
+BAL	L_interruptDisplay70
+L_interruptDisplay68:
 ;interruptUart4.c,193 :: 		wannaBeActiveBattery2 = 0;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
@@ -961,7 +977,7 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptDisplay67
+BEQ	L_interruptDisplay71
 ;interruptUart4.c,195 :: 		wannaBeActiveBattery2_old = wannaBeActiveBattery2;
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2+0)
@@ -992,20 +1008,22 @@ MOVW	R0, #lo_addr(_battery_chosen+0)
 MOVT	R0, #hi_addr(_battery_chosen+0)
 STRH	R1, [R0, #0]
 ;interruptUart4.c,201 :: 		}
-L_interruptDisplay67:
+L_interruptDisplay71:
 ;interruptUart4.c,202 :: 		}
-L_interruptDisplay66:
+L_interruptDisplay70:
 ;interruptUart4.c,204 :: 		}
 IT	AL
-BAL	L_interruptDisplay68
-L_interruptDisplay63:
+BAL	L_interruptDisplay72
+;interruptUart4.c,174 :: 		if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
+L__interruptDisplay165:
+L__interruptDisplay164:
 ;interruptUart4.c,206 :: 		if(wannaBeActiveBattery2_old == 1){
 MOVW	R0, #lo_addr(_wannaBeActiveBattery2_old+0)
 MOVT	R0, #hi_addr(_wannaBeActiveBattery2_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L_interruptDisplay69
+BNE	L_interruptDisplay73
 ;interruptUart4.c,207 :: 		uart4Battery2TurnedOn();
 BL	_uart4Battery2TurnedOn+0
 ;interruptUart4.c,208 :: 		uart4Battery1TurnedOff();
@@ -1014,8 +1032,8 @@ BL	_uart4Battery1TurnedOff+0
 BL	_uart4LightingTurnedOn+0
 ;interruptUart4.c,210 :: 		}
 IT	AL
-BAL	L_interruptDisplay70
-L_interruptDisplay69:
+BAL	L_interruptDisplay74
+L_interruptDisplay73:
 ;interruptUart4.c,212 :: 		uart4Battery2TurnedOff();
 BL	_uart4Battery2TurnedOff+0
 ;interruptUart4.c,213 :: 		if(wannaBeActiveBattery1_old == 1){
@@ -1024,114 +1042,114 @@ MOVT	R0, #hi_addr(_wannaBeActiveBattery1_old+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L_interruptDisplay71
+BNE	L_interruptDisplay75
 ;interruptUart4.c,214 :: 		uart4Battery1TurnedOn();
 BL	_uart4Battery1TurnedOn+0
 ;interruptUart4.c,215 :: 		uart4LightingTurnedOn();
 BL	_uart4LightingTurnedOn+0
 ;interruptUart4.c,216 :: 		}
 IT	AL
-BAL	L_interruptDisplay72
-L_interruptDisplay71:
+BAL	L_interruptDisplay76
+L_interruptDisplay75:
 ;interruptUart4.c,218 :: 		uart4Battery1TurnedOff();
 BL	_uart4Battery1TurnedOff+0
 ;interruptUart4.c,219 :: 		uart4LightingTurnedOff();
 BL	_uart4LightingTurnedOff+0
 ;interruptUart4.c,220 :: 		}
-L_interruptDisplay72:
+L_interruptDisplay76:
 ;interruptUart4.c,221 :: 		}
-L_interruptDisplay70:
+L_interruptDisplay74:
 ;interruptUart4.c,222 :: 		}
-L_interruptDisplay68:
+L_interruptDisplay72:
 ;interruptUart4.c,224 :: 		}
 IT	AL
-BAL	L_interruptDisplay73
+BAL	L_interruptDisplay77
 ;interruptUart4.c,169 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay163:
-L__interruptDisplay162:
-L__interruptDisplay161:
+L__interruptDisplay173:
+L__interruptDisplay172:
+L__interruptDisplay171:
 ;interruptUart4.c,170 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x16
-L__interruptDisplay160:
-L__interruptDisplay159:
+L__interruptDisplay170:
+L__interruptDisplay169:
 ;interruptUart4.c,171 :: 		&& uart_receive4[5] == 0x60 && uart_receive4[6] == 0x01
-L__interruptDisplay158:
-L__interruptDisplay157:
+L__interruptDisplay168:
+L__interruptDisplay167:
 ;interruptUart4.c,172 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay156:
+L__interruptDisplay166:
 ;interruptUart4.c,227 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay171
+BNE	L__interruptDisplay181
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay170
+BNE	L__interruptDisplay180
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay169
+BNE	L__interruptDisplay179
 ;interruptUart4.c,228 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay168
+BNE	L__interruptDisplay178
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #24
 IT	NE
-BNE	L__interruptDisplay167
+BNE	L__interruptDisplay177
 ;interruptUart4.c,229 :: 		&& uart_receive4[5] == 0x00 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay166
+BNE	L__interruptDisplay176
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay165
+BNE	L__interruptDisplay175
 ;interruptUart4.c,230 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay164
-L__interruptDisplay108:
+BNE	L__interruptDisplay174
+L__interruptDisplay112:
 ;interruptUart4.c,232 :: 		if(!control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay77
+BNE	L_interruptDisplay81
 ;interruptUart4.c,234 :: 		if (uart_receive4[8] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+8)
 MOVT	R0, #hi_addr(_uart_receive4+8)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay78
+BNE	L_interruptDisplay82
 ;interruptUart4.c,235 :: 		if(velocity_mode != VELOCITY_TURTLE){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	EQ
-BEQ	L_interruptDisplay79
+BEQ	L_interruptDisplay83
 ;interruptUart4.c,236 :: 		velocity_mode_new = VELOCITY_TURTLE;
 MOVS	R1, #0
 MOVW	R0, #lo_addr(_velocity_mode_new+0)
@@ -1146,127 +1164,127 @@ STRH	R1, [R0, #0]
 MOVW	R0, #0
 BL	_change_velocity_mode+0
 ;interruptUart4.c,239 :: 		}
-L_interruptDisplay79:
+L_interruptDisplay83:
 ;interruptUart4.c,240 :: 		}
 IT	AL
-BAL	L_interruptDisplay80
-L_interruptDisplay78:
+BAL	L_interruptDisplay84
+L_interruptDisplay82:
 ;interruptUart4.c,242 :: 		if(velocity_mode == VELOCITY_TURTLE){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay81
+BNE	L_interruptDisplay85
 ;interruptUart4.c,243 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,244 :: 		}
-L_interruptDisplay81:
+L_interruptDisplay85:
 ;interruptUart4.c,245 :: 		}
-L_interruptDisplay80:
+L_interruptDisplay84:
 ;interruptUart4.c,246 :: 		}
 IT	AL
-BAL	L_interruptDisplay82
-L_interruptDisplay77:
+BAL	L_interruptDisplay86
+L_interruptDisplay81:
 ;interruptUart4.c,248 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,255 :: 		}
-L_interruptDisplay82:
+L_interruptDisplay86:
 ;interruptUart4.c,257 :: 		}
 IT	AL
-BAL	L_interruptDisplay83
+BAL	L_interruptDisplay87
 ;interruptUart4.c,227 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay171:
-L__interruptDisplay170:
-L__interruptDisplay169:
+L__interruptDisplay181:
+L__interruptDisplay180:
+L__interruptDisplay179:
 ;interruptUart4.c,228 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
-L__interruptDisplay168:
-L__interruptDisplay167:
+L__interruptDisplay178:
+L__interruptDisplay177:
 ;interruptUart4.c,229 :: 		&& uart_receive4[5] == 0x00 && uart_receive4[6] == 0x01
-L__interruptDisplay166:
-L__interruptDisplay165:
+L__interruptDisplay176:
+L__interruptDisplay175:
 ;interruptUart4.c,230 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay164:
+L__interruptDisplay174:
 ;interruptUart4.c,261 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay179
+BNE	L__interruptDisplay189
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay178
+BNE	L__interruptDisplay188
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay177
+BNE	L__interruptDisplay187
 ;interruptUart4.c,262 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay176
+BNE	L__interruptDisplay186
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #24
 IT	NE
-BNE	L__interruptDisplay175
+BNE	L__interruptDisplay185
 ;interruptUart4.c,263 :: 		&& uart_receive4[5] == 0x20 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #32
 IT	NE
-BNE	L__interruptDisplay174
+BNE	L__interruptDisplay184
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay173
+BNE	L__interruptDisplay183
 ;interruptUart4.c,264 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay172
-L__interruptDisplay107:
+BNE	L__interruptDisplay182
+L__interruptDisplay111:
 ;interruptUart4.c,266 :: 		if(!control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay87
+BNE	L_interruptDisplay91
 ;interruptUart4.c,268 :: 		if (uart_receive4[8] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+8)
 MOVT	R0, #hi_addr(_uart_receive4+8)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay88
+BNE	L_interruptDisplay92
 ;interruptUart4.c,269 :: 		if(velocity_mode != VELOCITY_RABBIT){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	EQ
-BEQ	L_interruptDisplay89
+BEQ	L_interruptDisplay93
 ;interruptUart4.c,270 :: 		velocity_mode_new = VELOCITY_RABBIT;
 MOVS	R1, #1
 MOVW	R0, #lo_addr(_velocity_mode_new+0)
@@ -1281,127 +1299,127 @@ STRH	R1, [R0, #0]
 MOVW	R0, #1
 BL	_change_velocity_mode+0
 ;interruptUart4.c,273 :: 		}
-L_interruptDisplay89:
+L_interruptDisplay93:
 ;interruptUart4.c,274 :: 		}
 IT	AL
-BAL	L_interruptDisplay90
-L_interruptDisplay88:
+BAL	L_interruptDisplay94
+L_interruptDisplay92:
 ;interruptUart4.c,276 :: 		if(velocity_mode == VELOCITY_RABBIT){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L_interruptDisplay91
+BNE	L_interruptDisplay95
 ;interruptUart4.c,277 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,278 :: 		}
-L_interruptDisplay91:
+L_interruptDisplay95:
 ;interruptUart4.c,279 :: 		}
-L_interruptDisplay90:
+L_interruptDisplay94:
 ;interruptUart4.c,280 :: 		}
 IT	AL
-BAL	L_interruptDisplay92
-L_interruptDisplay87:
+BAL	L_interruptDisplay96
+L_interruptDisplay91:
 ;interruptUart4.c,282 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,290 :: 		}
-L_interruptDisplay92:
+L_interruptDisplay96:
 ;interruptUart4.c,292 :: 		}
 IT	AL
-BAL	L_interruptDisplay93
+BAL	L_interruptDisplay97
 ;interruptUart4.c,261 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay179:
-L__interruptDisplay178:
-L__interruptDisplay177:
+L__interruptDisplay189:
+L__interruptDisplay188:
+L__interruptDisplay187:
 ;interruptUart4.c,262 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
-L__interruptDisplay176:
-L__interruptDisplay175:
+L__interruptDisplay186:
+L__interruptDisplay185:
 ;interruptUart4.c,263 :: 		&& uart_receive4[5] == 0x20 && uart_receive4[6] == 0x01
-L__interruptDisplay174:
-L__interruptDisplay173:
+L__interruptDisplay184:
+L__interruptDisplay183:
 ;interruptUart4.c,264 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay172:
+L__interruptDisplay182:
 ;interruptUart4.c,297 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
 MOVW	R0, #lo_addr(_uart_receive4+0)
 MOVT	R0, #hi_addr(_uart_receive4+0)
 LDRB	R0, [R0, #0]
 CMP	R0, #90
 IT	NE
-BNE	L__interruptDisplay187
+BNE	L__interruptDisplay197
 MOVW	R0, #lo_addr(_uart_receive4+1)
 MOVT	R0, #hi_addr(_uart_receive4+1)
 LDRB	R0, [R0, #0]
 CMP	R0, #165
 IT	NE
-BNE	L__interruptDisplay186
+BNE	L__interruptDisplay196
 MOVW	R0, #lo_addr(_uart_receive4+2)
 MOVT	R0, #hi_addr(_uart_receive4+2)
 LDRB	R0, [R0, #0]
 CMP	R0, #6
 IT	NE
-BNE	L__interruptDisplay185
+BNE	L__interruptDisplay195
 ;interruptUart4.c,298 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
 MOVW	R0, #lo_addr(_uart_receive4+3)
 MOVT	R0, #hi_addr(_uart_receive4+3)
 LDRB	R0, [R0, #0]
 CMP	R0, #131
 IT	NE
-BNE	L__interruptDisplay184
+BNE	L__interruptDisplay194
 MOVW	R0, #lo_addr(_uart_receive4+4)
 MOVT	R0, #hi_addr(_uart_receive4+4)
 LDRB	R0, [R0, #0]
 CMP	R0, #24
 IT	NE
-BNE	L__interruptDisplay183
+BNE	L__interruptDisplay193
 ;interruptUart4.c,299 :: 		&& uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
 MOVW	R0, #lo_addr(_uart_receive4+5)
 MOVT	R0, #hi_addr(_uart_receive4+5)
 LDRB	R0, [R0, #0]
 CMP	R0, #64
 IT	NE
-BNE	L__interruptDisplay182
+BNE	L__interruptDisplay192
 MOVW	R0, #lo_addr(_uart_receive4+6)
 MOVT	R0, #hi_addr(_uart_receive4+6)
 LDRB	R0, [R0, #0]
 CMP	R0, #1
 IT	NE
-BNE	L__interruptDisplay181
+BNE	L__interruptDisplay191
 ;interruptUart4.c,300 :: 		&& uart_receive4[7] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+7)
 MOVT	R0, #hi_addr(_uart_receive4+7)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L__interruptDisplay180
-L__interruptDisplay106:
+BNE	L__interruptDisplay190
+L__interruptDisplay110:
 ;interruptUart4.c,302 :: 		if(!control_taken){
 MOVW	R1, #lo_addr(_control_taken+0)
 MOVT	R1, #hi_addr(_control_taken+0)
 LDR	R0, [R1, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay97
+BNE	L_interruptDisplay101
 ;interruptUart4.c,304 :: 		if (uart_receive4[8] == 0x00) {
 MOVW	R0, #lo_addr(_uart_receive4+8)
 MOVT	R0, #hi_addr(_uart_receive4+8)
 LDRB	R0, [R0, #0]
 CMP	R0, #0
 IT	NE
-BNE	L_interruptDisplay98
+BNE	L_interruptDisplay102
 ;interruptUart4.c,305 :: 		if(velocity_mode != VELOCITY_LEOPARD){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #2
 IT	EQ
-BEQ	L_interruptDisplay99
+BEQ	L_interruptDisplay103
 ;interruptUart4.c,306 :: 		velocity_mode_new = VELOCITY_LEOPARD;
 MOVS	R1, #2
 MOVW	R0, #lo_addr(_velocity_mode_new+0)
@@ -1416,55 +1434,55 @@ STRH	R1, [R0, #0]
 MOVW	R0, #2
 BL	_change_velocity_mode+0
 ;interruptUart4.c,309 :: 		}
-L_interruptDisplay99:
+L_interruptDisplay103:
 ;interruptUart4.c,310 :: 		}
 IT	AL
-BAL	L_interruptDisplay100
-L_interruptDisplay98:
+BAL	L_interruptDisplay104
+L_interruptDisplay102:
 ;interruptUart4.c,312 :: 		if(velocity_mode == VELOCITY_LEOPARD){
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 CMP	R0, #2
 IT	NE
-BNE	L_interruptDisplay101
+BNE	L_interruptDisplay105
 ;interruptUart4.c,313 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,314 :: 		}
-L_interruptDisplay101:
+L_interruptDisplay105:
 ;interruptUart4.c,315 :: 		}
-L_interruptDisplay100:
+L_interruptDisplay104:
 ;interruptUart4.c,316 :: 		}
 IT	AL
-BAL	L_interruptDisplay102
-L_interruptDisplay97:
+BAL	L_interruptDisplay106
+L_interruptDisplay101:
 ;interruptUart4.c,318 :: 		change_velocity_mode(velocity_mode);
 MOVW	R0, #lo_addr(_velocity_mode+0)
 MOVT	R0, #hi_addr(_velocity_mode+0)
 LDRH	R0, [R0, #0]
 BL	_change_velocity_mode+0
 ;interruptUart4.c,325 :: 		}
-L_interruptDisplay102:
+L_interruptDisplay106:
 ;interruptUart4.c,297 :: 		else if (uart_receive4[0] == 0x5A && uart_receive4[1] == 0xA5 && uart_receive4[2] == 0x06
-L__interruptDisplay187:
-L__interruptDisplay186:
-L__interruptDisplay185:
+L__interruptDisplay197:
+L__interruptDisplay196:
+L__interruptDisplay195:
 ;interruptUart4.c,298 :: 		&& uart_receive4[3] == 0x83 && uart_receive4[4] == 0x18
-L__interruptDisplay184:
-L__interruptDisplay183:
+L__interruptDisplay194:
+L__interruptDisplay193:
 ;interruptUart4.c,299 :: 		&& uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
-L__interruptDisplay182:
-L__interruptDisplay181:
+L__interruptDisplay192:
+L__interruptDisplay191:
 ;interruptUart4.c,300 :: 		&& uart_receive4[7] == 0x00) {
-L__interruptDisplay180:
+L__interruptDisplay190:
 ;interruptUart4.c,327 :: 		}
-L_interruptDisplay93:
-L_interruptDisplay83:
-L_interruptDisplay73:
-L_interruptDisplay59:
+L_interruptDisplay97:
+L_interruptDisplay87:
+L_interruptDisplay77:
+L_interruptDisplay61:
 L_interruptDisplay45:
 L_interruptDisplay35:
 ;interruptUart4.c,330 :: 		uart_count4 = 0;
@@ -1499,13 +1517,13 @@ SXTH	R1, R1
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 STRH	R1, [R0, #0]
-L_interruptDisplay103:
+L_interruptDisplay107:
 MOVW	R0, #lo_addr(_i+0)
 MOVT	R0, #hi_addr(_i+0)
 LDRSH	R0, [R0, #0]
 CMP	R0, #10
 IT	GE
-BGE	L_interruptDisplay104
+BGE	L_interruptDisplay108
 ;interruptUart4.c,337 :: 		uart_receive4[i] = 0x00;
 MOVW	R2, #lo_addr(_i+0)
 MOVT	R2, #hi_addr(_i+0)
@@ -1522,12 +1540,12 @@ ADDS	R0, R0, #1
 STRH	R0, [R2, #0]
 ;interruptUart4.c,338 :: 		}
 IT	AL
-BAL	L_interruptDisplay103
-L_interruptDisplay104:
+BAL	L_interruptDisplay107
+L_interruptDisplay108:
 ;interruptUart4.c,53 :: 		if (rcv_count_helper4 == 0 && startReceivingData4 == 0x01 && uart_count4 >= uart_receive4[2] + 3) {
-L__interruptDisplay190:
-L__interruptDisplay189:
-L__interruptDisplay188:
+L__interruptDisplay200:
+L__interruptDisplay199:
+L__interruptDisplay198:
 ;interruptUart4.c,340 :: 		}
 L_end_interruptDisplay:
 LDR	LR, [SP, #0]

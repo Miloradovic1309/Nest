@@ -61,6 +61,7 @@ void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
             }
           }
           
+          if(!bitBatteryChangeBlockCounter){
           if(uart_receive6[4] & 0x08){
             if(wannaBeActiveBattery1_old==0){
               uart4Battery2TurnedOff();
@@ -90,6 +91,7 @@ void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
             //bitBattery1Change = 1;
           }
 
+
           
           if(uart_receive6[4] & 0x10){
             if(wannaBeActiveBattery2_old==0){
@@ -118,6 +120,7 @@ void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
               battery_chosen = 0;
             }
             //bitBattery2Change = 1;
+          }
           }
           
 

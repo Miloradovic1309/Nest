@@ -63,6 +63,9 @@ void batteryChangeState(){
             uart4Battery2TurnedOff();
             uart4LightingTurnedOn();
             activeBattery = 1;
+            
+            bitBatteryChangeBlockCounter = 1;
+            batteryChangeBlockCounter = 0;
           }
           else if(battery_chosen == 2){
             ACCUMULATOR1_ON = 0;
@@ -75,13 +78,15 @@ void batteryChangeState(){
             uart4Battery2TurnedOn();
             uart4LightingTurnedOn();
             activeBattery = 2;
+            
+            bitBatteryChangeBlockCounter = 1;
+            batteryChangeBlockCounter = 0;
           }
           else{
             ACCUMULATOR1_ON = 0;
             ACCUMULATOR2_ON = 0;
             ACCUMULATORS_OFF = 0;
             activeBattery = 0;
-
           }
         }
         else{
@@ -103,6 +108,8 @@ void batteryChangeState(){
 
           battery_chosen = 0;
           battery_chosen_old = 0;
+          
+
 
         }
       }
@@ -113,7 +120,6 @@ void batteryChangeState(){
         
         battry_percentage_check = 1;
         battry_percentage_check_counter = 0;
-        
 
       }
     }
@@ -129,6 +135,8 @@ void batteryChangeState(){
       
       battry_percentage_check = 1;
       battry_percentage_check_counter = 0;
+      
+
     }
   }
   else{

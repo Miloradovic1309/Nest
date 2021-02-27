@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
-#line 99 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -246,19 +246,22 @@ extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
 
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
+
 
 
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/crc.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/crc.h"
 
 unsigned int ModRTU_CRC(char buf[], int len);
 unsigned short ModRTU_CRC_Hb(char buf[], int len);
 unsigned short ModRTU_CRC_Lb(char buf[], int len);
 
 unsigned short crc8(unsigned short dir, unsigned short speed);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/uartsend.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -316,14 +319,14 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 5 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 5 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
 void batteryLavelMeasure(){
 
  if(battry_percentage_check)
  {
  battry_percentage_check = 0;
  battry_percentage_check_counter = 0;
-#line 23 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 23 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  for(i=0; i<300; i++){
  ADC_Set_Input_Channel(_ADC_CHANNEL_4);
  adc_read2 = ADC2_Get_Sample(4);
@@ -372,41 +375,41 @@ void batteryLavelMeasure(){
 
 
  if(battery_percentage1 >= 87.5){
-#line 78 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 78 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery1Level4();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x04;
  }
  else if(battery_percentage1 >= 62.5){
-#line 91 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 91 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery1Level3();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x03;
  }
  else if(battery_percentage1 >= 37.5){
-#line 104 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 104 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery1Level2();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x02;
  }
  else if(battery_percentage1 >= 1.0){
-#line 117 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 117 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery1Level1();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x01;
  }
  else if(battery_percentage1 < 1.0){
-#line 130 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 130 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery1Level0();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x00;
  }
-#line 148 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 148 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  for(i=0; i<300; i++){
  ADC_Set_Input_Channel(_ADC_CHANNEL_5);
  adc_read3 = ADC2_Get_Sample(5);
@@ -452,7 +455,7 @@ void batteryLavelMeasure(){
 
 
  if(battery_percentage2 >= 87.5){
-#line 200 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 200 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery2Level4();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
@@ -460,28 +463,28 @@ void batteryLavelMeasure(){
 
  }
  else if(battery_percentage2 >= 62.5){
-#line 214 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 214 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery2Level3();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x03 << 3);
  }
  else if(battery_percentage2 >= 37.5){
-#line 227 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 227 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery2Level2();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x02 << 3);
  }
  else if(battery_percentage2 >= 1.0){
-#line 240 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 240 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery2Level1();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x01 << 3);
  }
  else if(battery_percentage2 < 1.0){
-#line 253 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/batteryLavel.c"
+#line 253 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  uart4Battery2Level0();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;

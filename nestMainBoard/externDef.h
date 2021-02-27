@@ -1,4 +1,4 @@
-#define FREQUENCY                       0x17
+#define FREQUENCY                       0x00
 
 #define ADDRESS_PHONE                   0x25
 #define ADDRESS_STATION                 0x30
@@ -364,6 +364,9 @@ extern bit beingControlledByMobile;
 extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
+
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
 
 
 /*****************************************************************************/

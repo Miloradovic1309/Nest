@@ -313,6 +313,10 @@ bit stopGearBit;
 bit bitCheckIsItStoppedGear;
 
 
+bit bitBatteryChangeBlockCounter;
+unsigned int batteryChangeBlockCounter = 0;
+
+
 
 
 /*****************************************************************************/

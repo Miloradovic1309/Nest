@@ -1,12 +1,12 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/def.h"
-#line 38 "c:/users/dan/desktop/new folder (2)/nest4/nest/def.h"
+#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/def.h"
+#line 38 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/def.h"
 sbit LED1 at GPIOB_ODR.B14;
 sbit LED2 at GPIOB_ODR.B15;
 sbit LED3 at GPIOD_ODR.B8;
 sbit LED4 at GPIOD_ODR.B9;
 sbit LED5 at GPIOD_ODR.B10;
-#line 52 "c:/users/dan/desktop/new folder (2)/nest4/nest/def.h"
+#line 52 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/def.h"
 sbit BUZZER_ALARM at GPIOD_ODR.B11;
 
 
@@ -25,7 +25,7 @@ sbit ACCUMULATORS_OFF at GPIOD_ODR.B5;
 sbit ACCUMULATOR1_ON at GPIOD_ODR.B7;
 sbit ACCUMULATOR2_ON at GPIOD_ODR.B6;
 sbit ACCUMULATOR_SENSE at GPIOA_IDR.B6;
-#line 100 "c:/users/dan/desktop/new folder (2)/nest4/nest/def.h"
+#line 100 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/def.h"
 sbit LORA_M0 at GPIOD_ODR.B15;
 sbit LORA_M1 at GPIOD_ODR.B14;
 sbit LORA_AUX at GPIOD_ODR.B13;
@@ -240,8 +240,12 @@ bit beingControlledByMobile;
 bit controlWasTaken;
 bit stopGearBit;
 bit bitCheckIsItStoppedGear;
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
-#line 99 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+
+
+bit bitBatteryChangeBlockCounter;
+unsigned int batteryChangeBlockCounter = 0;
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -264,7 +268,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -487,19 +491,22 @@ extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
 
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
+
 
 
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/crc.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/crc.h"
 
 unsigned int ModRTU_CRC(char buf[], int len);
 unsigned short ModRTU_CRC_Hb(char buf[], int len);
 unsigned short ModRTU_CRC_Lb(char buf[], int len);
 
 unsigned short crc8(unsigned short dir, unsigned short speed);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/uartsend.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -557,7 +564,7 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/timers.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/timers.h"
 
 
 void InitTimer2(){
@@ -581,7 +588,7 @@ void InitTimer4(){
  TIM4_DIER.UIE = 1;
  TIM4_CR1.CEN = 1;
 }
-#line 7 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 7 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
 void batteryChangeState(void);
 void batteryLavelMeasure(void);
 void directionWheelADC(void);
@@ -688,11 +695,11 @@ void main() {
  pwm_duty = ((unsigned int)((double)(((double)(((double)pwm_ratio) * pwm_percent)) / ((double)100))));
  PWM_TIM3_Set_Duty(pwm_duty, _PWM_NON_INVERTED, _PWM_CHANNEL2);
  PWM_TIM3_Start(_PWM_CHANNEL2, &_GPIO_MODULE_TIM3_CH2_PA7);
-#line 119 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 119 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  GPIO_Analog_Input(&GPIOA_IDR, _GPIO_PINMASK_5);
  GPIO_Analog_Input(&GPIOA_IDR, _GPIO_PINMASK_4);
  ADC2_Init();
-#line 148 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 148 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  uart4Battery1Level0();
  uart4Battery2Level0();
  uart4Battery1TurnedOff();
@@ -704,7 +711,7 @@ void main() {
 
  LIGHT_NAVIGATION = 0;
  LIGHT_INTERIOR = 0;
-#line 170 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 170 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  countedTimer = 0;
 
  bitDelay3Seconds = 0;
@@ -735,6 +742,8 @@ void main() {
  resetTouchSensor = 0;
  resetedTouchSensor = 0;
 
+ bitBatteryChangeBlockCounter = 0;
+
 
 
 
@@ -764,7 +773,7 @@ void main() {
  controlWasTaken = 0;
  stopGearBit = 0;
  bitCheckIsItStoppedGear = 0;
-#line 241 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 243 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  LED1 = 0;
  LED2 = 0;
  LED3 = 0;
@@ -778,7 +787,7 @@ void main() {
 
  InitTimer2();
  InitTimer4();
-#line 273 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 275 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  beingControlledByMobile = 1;
  velocity_mode_new =  1 ;
  velocity_mode =  1 ;
@@ -887,7 +896,7 @@ void main() {
  uart4InteriorLightTurnedOff();
  }
  }
-#line 405 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/nest.c"
+#line 407 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/nest.c"
  if(bitCheckStatusDisplay){
  bitCheckStatusDisplay = 0;
 

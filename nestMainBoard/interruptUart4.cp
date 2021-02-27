@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/interruptUart4.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
-#line 99 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart4.c"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -246,12 +246,15 @@ extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
 
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
+
 
 
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/uartsend.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -309,7 +312,7 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 8 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/interruptUart4.c"
+#line 8 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart4.c"
 void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  receive4 = UART4_Read();
 
@@ -416,7 +419,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  && uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
  && uart_receive4[7] == 0x00) {
 
- if(!control_taken){
+ if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
  if (uart_receive4[8] == 0x00) {
 
 
@@ -476,7 +479,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  && uart_receive4[5] == 0x60 && uart_receive4[6] == 0x01
  && uart_receive4[7] == 0x00) {
 
- if(!control_taken){
+ if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
  if (uart_receive4[8] == 0x00) {
 
  wannaBeActiveBattery2 = 1;
@@ -551,7 +554,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  }
  else{
  change_velocity_mode(velocity_mode);
-#line 255 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/interruptUart4.c"
+#line 255 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart4.c"
  }
 
  }
@@ -580,7 +583,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  }
  else{
  change_velocity_mode(velocity_mode);
-#line 290 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/interruptUart4.c"
+#line 290 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart4.c"
  }
 
  }
@@ -610,7 +613,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
  }
  else{
  change_velocity_mode(velocity_mode);
-#line 325 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/interruptUart4.c"
+#line 325 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart4.c"
  }
 
  }

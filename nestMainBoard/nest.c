@@ -196,6 +196,8 @@ void main() {
   
   resetTouchSensor = 0;
   resetedTouchSensor = 0;
+  
+  bitBatteryChangeBlockCounter = 0;
 
   
   //LED_C = 1;

@@ -111,7 +111,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
                                 && uart_receive4[5] == 0x40 && uart_receive4[6] == 0x01
                                 && uart_receive4[7] == 0x00) {
                                 
-      if(!control_taken){
+      if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
         if (uart_receive4[8] == 0x00) {
           //battery1TurnedOnOff = 1;
           //HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
@@ -171,7 +171,7 @@ void interruptDisplay() iv IVT_INT_UART4 ics ICS_AUTO {
                                 && uart_receive4[5] == 0x60 && uart_receive4[6] == 0x01
                                 && uart_receive4[7] == 0x00) {
 
-      if(!control_taken){
+      if((!control_taken)&&(!bitBatteryChangeBlockCounter)){
         if (uart_receive4[8] == 0x00) {
           //battery2TurnedOnOff = 1;
           wannaBeActiveBattery2 = 1;

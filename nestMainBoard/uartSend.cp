@@ -1,13 +1,13 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/uartSend.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/crc.h"
+#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/uartSend.c"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/crc.h"
 
 unsigned int ModRTU_CRC(char buf[], int len);
 unsigned short ModRTU_CRC_Hb(char buf[], int len);
 unsigned short ModRTU_CRC_Lb(char buf[], int len);
 
 unsigned short crc8(unsigned short dir, unsigned short speed);
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
-#line 99 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -30,7 +30,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/desktop/new folder (2)/nest4/nest/externdef.h"
+#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -253,12 +253,15 @@ extern bit controlWasTaken;
 extern bit stopGearBit;
 extern bit bitCheckIsItStoppedGear;
 
+extern bit bitBatteryChangeBlockCounter;
+extern unsigned int batteryChangeBlockCounter;
+
 
 
 
 
 void change_velocity_mode(unsigned int mode);
-#line 4 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/uartSend.c"
+#line 4 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/uartSend.c"
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed){
 
 
@@ -286,7 +289,7 @@ void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpe
 void uartSendStatusToStation(){
  UART6_Write(0x00);
  UART6_Write( 0x30 );
- UART6_Write( 0x17 );
+ UART6_Write( 0x00 );
 
  UART6_Write(0x21);
  UART6_Write(0xC0);
@@ -444,7 +447,7 @@ void uart4Battery2TurnedOff(){
 
 
 void uart4LightingTurnedOn(){
-#line 200 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/uartSend.c"
+#line 200 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/uartSend.c"
  UART4_Write(0x5A);
  UART4_Write(0xA5);
  UART4_Write(0x05);
@@ -456,7 +459,7 @@ void uart4LightingTurnedOn(){
 }
 
 void uart4LightingTurnedOff(){
-#line 222 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nest/uartSend.c"
+#line 222 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/uartSend.c"
  UART4_Write(0x5A);
  UART4_Write(0xA5);
  UART4_Write(0x05);
