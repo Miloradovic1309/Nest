@@ -361,55 +361,57 @@ void batteryLavelMeasure(){
 
 
 
- adc_avg2 = adc_avg2 - 2860f;
+ adc_avg2 = adc_avg2 - 2764f;
 
  if(adc_avg2 < 0f){
  adc_avg2 = 0f;
  }
- else if(adc_avg2 > 340f){
- adc_avg2 = 340f;
+ else if(adc_avg2 > 436f){
+ adc_avg2 = 436f;
  }
 
 
- battery_percentage1 = (100f/340f)*adc_avg2;
+ battery_percentage1 = (100f/436f)*adc_avg2;
 
 
- if(battery_percentage1 >= 87.5){
-#line 78 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ if(battery_percentage1 >= 89.0){
+
  uart4Battery1Level4();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x04;
  }
- else if(battery_percentage1 >= 62.5){
-#line 91 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ else if(battery_percentage1 >= 61.0){
+
+
  uart4Battery1Level3();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x03;
  }
- else if(battery_percentage1 >= 37.5){
-#line 104 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ else if(battery_percentage1 >= 33.0){
+
+
  uart4Battery1Level2();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x02;
  }
  else if(battery_percentage1 >= 1.0){
-#line 117 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+
  uart4Battery1Level1();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x01;
  }
  else if(battery_percentage1 < 1.0){
-#line 130 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+
  uart4Battery1Level0();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x00;
  }
-#line 148 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 120 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
  for(i=0; i<300; i++){
  ADC_Set_Input_Channel(_ADC_CHANNEL_5);
  adc_read3 = ADC2_Get_Sample(5);
@@ -441,50 +443,54 @@ void batteryLavelMeasure(){
 
 
 
- adc_avg3 = adc_avg3 - 2860f;
+ adc_avg3 = adc_avg3 - 2764f;
 
  if(adc_avg3 < 0f){
  adc_avg3 = 0f;
  }
- else if(adc_avg3 > 340f){
- adc_avg3 = 340f;
+ else if(adc_avg3 > 436f){
+ adc_avg3 = 436f;
  }
 
- battery_percentage2 = (100f/340f)*adc_avg3;
+ battery_percentage2 = (100f/436f)*adc_avg3;
 
 
 
- if(battery_percentage2 >= 87.5){
-#line 200 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ if(battery_percentage2 >= 89.0){
+
  uart4Battery2Level4();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x04 << 3);
 
  }
- else if(battery_percentage2 >= 62.5){
-#line 214 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ else if(battery_percentage2 >= 61.0){
+
+
  uart4Battery2Level3();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x03 << 3);
  }
- else if(battery_percentage2 >= 37.5){
-#line 227 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+ else if(battery_percentage2 >= 33.0){
+
+
  uart4Battery2Level2();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x02 << 3);
  }
  else if(battery_percentage2 >= 1.0){
-#line 240 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+
+
  uart4Battery2Level1();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;
  boatBatteriesLavel = boatBatteriesLavel | (0x01 << 3);
  }
  else if(battery_percentage2 < 1.0){
-#line 253 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+
+
  uart4Battery2Level0();
 
  boatBatteriesLavel = boatBatteriesLavel & 0xC7;

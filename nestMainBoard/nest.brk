@@ -5,4 +5,28 @@
     <Enabled>True</Enabled>
     <Type>0</Type>
   </BP>
+  <BP>
+    <UnitName>batteryLavel.c</UnitName>
+    <Line>9</Line>
+    <Enabled>True</Enabled>
+    <Type>0</Type>
+  </BP>
+  <BP>
+    <UnitName>batteryLavel.c</UnitName>
+    <Line>47</Line>
+    <Enabled>True</Enabled>
+    <Type>0</Type>
+  </BP>
+  <BP>
+    <UnitName>batteryLavel.c</UnitName>
+    <Line>160</Line>
+    <Enabled>True</Enabled>
+    <Type>0</Type>
+  </BP>
+  <BP>
+    <UnitName>batteryLavel.c</UnitName>
+    <Line>151</Line>
+    <Enabled>True</Enabled>
+    <Type>0</Type>
+  </BP>
 </BREAKS>
