@@ -8,12 +8,6 @@ SXTB	R1, R1
 MOVW	R0, #lo_addr(TIM2_SR+0)
 MOVT	R0, #hi_addr(TIM2_SR+0)
 _SX	[R0, ByteOffset(TIM2_SR+0)]
-;timer2.c,8 :: 		LED = ~LED;
-MOVW	R1, #lo_addr(LED+0)
-MOVT	R1, #hi_addr(LED+0)
-_LX	[R1, ByteOffset(LED+0)]
-EOR	R0, R0, #1
-_SX	[R1, ByteOffset(LED+0)]
 ;timer2.c,10 :: 		if(bitExpectAnswer){
 MOVW	R1, #lo_addr(_bitExpectAnswer+0)
 MOVT	R1, #hi_addr(_bitExpectAnswer+0)

@@ -160,6 +160,12 @@ STR	R1, [R0, #0]
 BL	_InitTimer2+0
 ;nestLora.c,73 :: 		setup_IWDG();
 BL	_setup_IWDG+0
+;nestLora.c,75 :: 		LED = 1;
+MOVS	R1, #1
+SXTB	R1, R1
+MOVW	R0, #lo_addr(GPIOB_ODR+0)
+MOVT	R0, #hi_addr(GPIOB_ODR+0)
+_SX	[R0, ByteOffset(GPIOB_ODR+0)]
 ;nestLora.c,76 :: 		Delay_ms(100);
 MOVW	R7, #20351
 MOVT	R7, #18
@@ -178,6 +184,12 @@ MOVW	R1, #43690
 MOVW	R0, #lo_addr(IWDG_KR+0)
 MOVT	R0, #hi_addr(IWDG_KR+0)
 STR	R1, [R0, #0]
+;nestLora.c,80 :: 		LED = 0;
+MOVS	R1, #0
+SXTB	R1, R1
+MOVW	R0, #lo_addr(GPIOB_ODR+0)
+MOVT	R0, #hi_addr(GPIOB_ODR+0)
+_SX	[R0, ByteOffset(GPIOB_ODR+0)]
 ;nestLora.c,87 :: 		if(bitReceivedCheckStatusOfBoat){
 MOVW	R1, #lo_addr(_bitReceivedCheckStatusOfBoat+0)
 MOVT	R1, #hi_addr(_bitReceivedCheckStatusOfBoat+0)

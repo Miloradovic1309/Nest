@@ -1,5 +1,5 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/timer2.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestlora72/externdef.h"
+#line 1 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/timer2.c"
+#line 1 "c:/users/dan/desktop/nneesstt/nestlora72/externdef.h"
 
 
 
@@ -66,12 +66,12 @@ extern char boatBatteriesLavel;
 void uartRequestStatusFromBoat();
 
 void sendRequestStatusToAndroid();
-#line 4 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/timer2.c"
+#line 4 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/timer2.c"
 void Timer2_interrupt() iv IVT_INT_TIM2 {
  TIM2_SR.UIF = 0;
 
 
- LED = ~LED;
+
 
  if(bitExpectAnswer){
  sendRequestStatusToAndroid();

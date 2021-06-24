@@ -72,12 +72,12 @@ void main() {
   
   setup_IWDG();
 
-  
+  LED = 1;
   Delay_ms(100);
   
   while(1){
     IWDG_KR = 0xAAAA;    //Reload IWDG
-    //LED = 1;
+    LED = 0;
     
     //LED0 = 1;
     

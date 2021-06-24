@@ -1,5 +1,5 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/nestLora.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestlora72/def.h"
+#line 1 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/nestLora.c"
+#line 1 "c:/users/dan/desktop/nneesstt/nestlora72/def.h"
 
 
 
@@ -57,7 +57,7 @@ char boatBatteriesLavel = 0x00;
 char boatStatus = 0x00;
 char boatStatusGear = 0x00;
 char boatStatusWheel = 0x96;
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestlora72/externdef.h"
+#line 1 "c:/users/dan/desktop/nneesstt/nestlora72/externdef.h"
 
 
 
@@ -124,7 +124,7 @@ extern char boatBatteriesLavel;
 void uartRequestStatusFromBoat();
 
 void sendRequestStatusToAndroid();
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestlora72/timers.h"
+#line 1 "c:/users/dan/desktop/nneesstt/nestlora72/timers.h"
 
 
 void InitTimer2(){
@@ -136,7 +136,7 @@ void InitTimer2(){
  TIM2_DIER.UIE = 1;
  TIM2_CR1.CEN = 1;
 }
-#line 5 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/nestLora.c"
+#line 5 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/nestLora.c"
 void setup_IWDG()
 {
  IWDG_KR = 0x5555;
@@ -153,7 +153,7 @@ void main() {
  UART2_Init_Advanced(115200, _UART_8_BIT_DATA, _UART_NOPARITY, _UART_ONE_STOPBIT, &_GPIO_MODULE_USART2_PA23);
  USART2_CR1bits.RXNEIE = 1;
  NVIC_IntEnable(IVT_INT_USART2);
-#line 28 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/nestLora.c"
+#line 28 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/nestLora.c"
  UART3_Init_Advanced(115200, _UART_8_BIT_DATA, _UART_NOPARITY, _UART_ONE_STOPBIT, &_GPIO_MODULE_USART3_PB10_11);
  USART3_CR1bits.RXNEIE = 1;
  NVIC_IntEnable(IVT_INT_USART3);
@@ -184,15 +184,15 @@ void main() {
  bitExpectAnswer = 0;
 
  InitTimer2();
-#line 73 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestLora72/nestLora.c"
+#line 73 "C:/Users/Dan/Desktop/NNEESSTT/nestLora72/nestLora.c"
  setup_IWDG();
 
-
+ LED = 1;
  Delay_ms(100);
 
  while(1){
  IWDG_KR = 0xAAAA;
-
+ LED = 0;
 
 
 
