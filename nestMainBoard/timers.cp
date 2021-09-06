@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/timers.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
-#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 1 "E:/ComoBoats/NNEESSTT/nestMainBoard/timers.c"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
+#line 99 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 146 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -254,10 +254,10 @@ extern unsigned int batteryChangeBlockCounter;
 
 
 void change_velocity_mode(unsigned int mode);
-#line 6 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/timers.c"
+#line 6 "E:/ComoBoats/NNEESSTT/nestMainBoard/timers.c"
 void Timer2_interrupt() iv IVT_INT_TIM2 {
  TIM2_SR.UIF = 0;
-#line 23 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/timers.c"
+#line 23 "E:/ComoBoats/NNEESSTT/nestMainBoard/timers.c"
  if((battery_chosen_old == 1 || battery_chosen_old == 2)&& ACCUMULATOR_SENSE)
  {
  if(duzinaSignala2 > dutyy){
@@ -276,7 +276,7 @@ void Timer2_interrupt() iv IVT_INT_TIM2 {
 
 void Timer4_interrupt() iv IVT_INT_TIM4 {
  TIM4_SR.UIF = 0;
-#line 56 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/timers.c"
+#line 56 "E:/ComoBoats/NNEESSTT/nestMainBoard/timers.c"
  if(bitBatteryChangeBlockCounter){
  batteryChangeBlockCounter++;
  if(batteryChangeBlockCounter >= 60){

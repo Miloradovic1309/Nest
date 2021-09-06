@@ -39,7 +39,6 @@ main
 					ChekXForEvent
 	InitTimer2
 		NVIC_IntEnable
-	setup_IWDG
 	Button
 		Delay_500us
 	ADC_Set_Input_Channel

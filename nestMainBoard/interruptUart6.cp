@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
-#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 1 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
+#line 99 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 146 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -254,7 +254,7 @@ extern unsigned int batteryChangeBlockCounter;
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -312,7 +312,7 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 9 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 9 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
 void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
  receive6 = UART6_Read();
 
@@ -447,28 +447,28 @@ void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
 
  switch(uart_receive6[3] & 0x07){
  case 1:
-#line 147 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 147 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
  if(control_taken){
  gear_status = 1;
  }
 
  break;
  case 2:
-#line 157 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 157 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
  if(control_taken){
  gear_status = 2;
  }
 
  break;
  case 3:
-#line 167 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 167 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
  if(control_taken){
  gear_status = 3;
  }
 
  break;
  case 4:
-#line 177 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 177 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
  if(control_taken){
  gear_status = 4;
  }
@@ -476,7 +476,7 @@ void interruptLora() iv IVT_INT_USART6 ics ICS_AUTO {
 
  break;
  case 5:
-#line 188 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart6.c"
+#line 188 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart6.c"
  if(control_taken){
  gear_status = 5;
  }

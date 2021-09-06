@@ -1,5 +1,5 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nestHelm/nestHelm.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nesthelm/externdef.h"
+#line 1 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/nestHelm.c"
+#line 1 "c:/users/dan/desktop/nneesstt/nesthelm/externdef.h"
 
 
 
@@ -101,7 +101,7 @@ extern bit bitResetTouchSensor;
 
 void uart1SendStatus(unsigned int gear_status, unsigned int dutyyy);
 void uart1SendCallibration();
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nesthelm/def.h"
+#line 1 "c:/users/dan/desktop/nneesstt/nesthelm/def.h"
 
 
 
@@ -195,7 +195,7 @@ unsigned int sideDifference = 0;
 
 
 bit bitResetTouchSensor;
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nesthelm/timers.h"
+#line 1 "c:/users/dan/desktop/nneesstt/nesthelm/timers.h"
 
 
 void InitTimer2(){
@@ -207,7 +207,7 @@ void InitTimer2(){
  TIM2_DIER.UIE = 1;
  TIM2_CR1.CEN = 1;
 }
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nesthelm/eeprom.h"
+#line 1 "c:/users/dan/desktop/nneesstt/nesthelm/eeprom.h"
 void EEPROM_24C02_Init();
 void EEPROM_24C02_WrSingle(unsigned short wAddr, unsigned short wData);
 unsigned short EEPROM_24C02_RdSingle(unsigned int rAddr);
@@ -217,7 +217,7 @@ void eprompisi();
 void eepromSaveRight();
 void eepromSaveLeft();
 void eepromDir();
-#line 7 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nestHelm/nestHelm.c"
+#line 7 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/nestHelm.c"
 int arrayDuty[5] = {150, 150, 150, 150, 150};
 int dutyCounter = 0;
 int dutyOld = 150;
@@ -226,6 +226,22 @@ int adc_array[300];
 int adc_array_asc[300];
 int tmp;
 int j = 0;
+
+float sensitivityDuty;
+float sensitivityDuty2;
+float directF;
+float calDirectF;
+int sensDuty = 150;
+
+
+
+float fHalfSideDif;
+float fHalfDuty;
+float fHalfDutyAfterFun;
+float fAdcAvgHalf;
+float fAdcAvg;
+float fDuty = 150f;
+
 
 
 void setup_IWDG()
@@ -339,11 +355,11 @@ void main() {
 
  InitTimer2();
 
- setup_IWDG();
+
 
  while(1){
 
- IWDG_KR = 0xAAAA;
+
 
  WHEEL_DIODE = WHEEL_TOUCH;
  WHEEL_LIGHT = WHEEL_TOUCH | bitDelay3Seconds;
@@ -370,7 +386,7 @@ void main() {
  if (Button(&GPIOA_IDR, 7, 20, 1)){
  N_LIGHT = 1;
  TWO_LIGHT = THREE_LIGHT = ONE_LIGHT = R_LIGHT = 0;
-#line 165 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nestHelm/nestHelm.c"
+#line 181 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/nestHelm.c"
  }
 
  if (Button(&GPIOA_IDR, 6, 20, 1)){
@@ -477,15 +493,51 @@ void main() {
  else if(adc_avg1 > (float)sideDifference){
  adc_avg1 = (float)sideDifference;
  }
+#line 304 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/nestHelm.c"
+ fHalfSideDif = sideDifference / 2f;
 
+ if(adc_avg1 > fHalfSideDif){
+ fAdcAvg = adc_avg1-fHalfSideDif;
+ }
+ else if(adc_avg1 < fHalfSideDif){
+ fAdcAvg = fHalfSideDif-adc_avg1;
+ }
+ else{
+ fAdcAvg = 0f;
+ }
+
+ fHalfDuty = (fAdcAvg * 5f) / (float)fHalfSideDif;
+ fHalfDutyAfterFun = 4f * fHalfDuty * fHalfDuty;
 
  if(dir != 0){
  dutyF = ((adc_avg1 * 200f) / ((float)sideDifference)) + 50f;
+
+ if(adc_avg1 < fHalfSideDif){
+ fDuty = 150f - fHalfDutyAfterFun;
+ }
+ else if(adc_avg1 > fHalfSideDif){
+ fDuty = 150f + fHalfDutyAfterFun;
+ }
+ else{
+ fDuty = 150f;
+ }
+
+
  }
  else{
  dutyF = 250f - ((adc_avg1 * 200f) / ((float)sideDifference));
+
+ if(adc_avg1 < fHalfSideDif){
+ fDuty = 150f + fHalfDutyAfterFun;
  }
- calDutyF = (long)(dutyF * 100f);
+ else if(adc_avg1 > fHalfSideDif){
+ fDuty = 150f - fHalfDutyAfterFun;
+ }
+ else{
+ fDuty = 150f;
+ }
+ }
+ calDutyF = (long)(fDuty * 100f);
 
 
 
@@ -496,13 +548,21 @@ void main() {
  dutyy = (int)dutyF;
  }
 
+
+
  calDuty = dutyy;
 
- if(dutyy >= 149 && dutyy <= 151){
- dutyy = 150;
- }
 
- if((!((dutyOld - 2 < dutyy) && (dutyy < dutyOld + 2))) && (dutyCounter < 4)){
+
+
+ if(((int)(fDuty * 10f)) % 10 >= 5){
+ dutyy = (int)fDuty + 1;
+ }
+ else{
+ dutyy = (int)fDuty;
+ }
+#line 385 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/nestHelm.c"
+ if((!((dutyOld - 2 < dutyy) && (dutyy < dutyOld + 2))) && (dutyCounter < 3)){
  dutyy = dutyOld;
  dutyCounter++;
  }
@@ -510,6 +570,11 @@ void main() {
  dutyCounter = 0;
  dutyOld = dutyy;
  }
+
+
+
+
+
 
 
  dutyyy = dutyy;

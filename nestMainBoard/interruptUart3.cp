@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart3.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
-#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 1 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart3.c"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
+#line 99 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 146 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -254,7 +254,7 @@ extern unsigned int batteryChangeBlockCounter;
 
 
 void change_velocity_mode(unsigned int mode);
-#line 4 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/interruptUart3.c"
+#line 4 "E:/ComoBoats/NNEESSTT/nestMainBoard/interruptUart3.c"
 void interruptJoystick() iv IVT_INT_USART3 ics ICS_AUTO {
  receive3 = UART3_Read();
 

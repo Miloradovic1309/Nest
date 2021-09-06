@@ -2327,6 +2327,7 @@ cal5_bit
 cal6
 cal6_bit
 caladcavg
+caldirectf
 calduty
 caldutyf
 can_remap
@@ -8361,6 +8362,7 @@ dir_tim4_cr1_bit
 dir_tim5_cr1_bit
 dir_tim8_cr1_bit
 dir_usb_istr_bit
+directf
 discen
 discen
 discen
@@ -10049,6 +10051,8 @@ fact8_bit
 fact9
 fact9
 fact9_bit
+fadcavg
+fadcavghalf
 far
 far0
 far0_bit
@@ -12033,6 +12037,7 @@ fbm8_bit
 fbm9
 fbm9
 fbm9_bit
+fduty
 fe
 fe
 fe
@@ -12099,6 +12104,9 @@ ffie0_bit
 ffie1
 ffie1
 ffie1_bit
+fhalfduty
+fhalfdutyafterfun
+fhalfsidedif
 fif0count
 fif0count0
 fif0count0_bit
@@ -20243,6 +20251,9 @@ secf_bit
 secie
 secie
 secie_bit
+sensduty
+sensitivityduty
+sensitivityduty2
 set_fosc_khz
 setena
 setena

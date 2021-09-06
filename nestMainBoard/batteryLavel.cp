@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
-#line 99 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 1 "E:/ComoBoats/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
+#line 99 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit LED1;
 extern sfr sbit LED2;
 extern sfr sbit LED3;
@@ -23,7 +23,7 @@ extern sfr sbit LIGHT_INTERIOR;
 extern sfr sbit ACCUMULATORS_OFF;
 extern sfr sbit ACCUMULATOR1_ON;
 extern sfr sbit ACCUMULATOR2_ON;
-#line 146 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/externdef.h"
+#line 146 "e:/comoboats/nneesstt/nestmainboard/externdef.h"
 extern sfr sbit ACCUMULATOR_SENSE;
 
 
@@ -254,14 +254,14 @@ extern unsigned int batteryChangeBlockCounter;
 
 
 void change_velocity_mode(unsigned int mode);
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/crc.h"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/crc.h"
 
 unsigned int ModRTU_CRC(char buf[], int len);
 unsigned short ModRTU_CRC_Hb(char buf[], int len);
 unsigned short ModRTU_CRC_Lb(char buf[], int len);
 
 unsigned short crc8(unsigned short dir, unsigned short speed);
-#line 1 "c:/users/dan/downloads/nneesstt5/nneesstt/nestmainboard/uartsend.h"
+#line 1 "e:/comoboats/nneesstt/nestmainboard/uartsend.h"
 
 
 void uartSendCommandMotor(unsigned short motorDirection, unsigned short motorSpeed);
@@ -319,14 +319,14 @@ void uart4SpeedModeLeopard();
 void uart3SendJoystick();
 void uart3ResetSensorTouch();
 void uart3SendJoystickForced();
-#line 5 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 5 "E:/ComoBoats/NNEESSTT/nestMainBoard/batteryLavel.c"
 void batteryLavelMeasure(){
 
  if(battry_percentage_check)
  {
  battry_percentage_check = 0;
  battry_percentage_check_counter = 0;
-#line 23 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 23 "E:/ComoBoats/NNEESSTT/nestMainBoard/batteryLavel.c"
  for(i=0; i<300; i++){
  ADC_Set_Input_Channel(_ADC_CHANNEL_4);
  adc_read2 = ADC2_Get_Sample(4);
@@ -411,7 +411,7 @@ void batteryLavelMeasure(){
  boatBatteriesLavel = boatBatteriesLavel & 0xF8;
  boatBatteriesLavel = boatBatteriesLavel | 0x00;
  }
-#line 120 "C:/Users/Dan/Downloads/NNEESSTT5/NNEESSTT/nestMainBoard/batteryLavel.c"
+#line 120 "E:/ComoBoats/NNEESSTT/nestMainBoard/batteryLavel.c"
  for(i=0; i<300; i++){
  ADC_Set_Input_Channel(_ADC_CHANNEL_5);
  adc_read3 = ADC2_Get_Sample(5);

@@ -13,6 +13,22 @@ int adc_array_asc[300];
 int tmp;
 int j = 0;
 
+float sensitivityDuty;
+float sensitivityDuty2;
+float directF;
+float calDirectF;
+int sensDuty = 150;
+
+
+
+float fHalfSideDif;
+float fHalfDuty;
+float fHalfDutyAfterFun;
+float fAdcAvgHalf;
+float fAdcAvg;
+float fDuty = 150f;
+
+
 
 void setup_IWDG()
 {
@@ -125,11 +141,11 @@ void main() {
   
   InitTimer2();
   
-  setup_IWDG();
+  //setup_IWDG();
   
   while(1){
   
-    IWDG_KR = 0xAAAA;
+    //IWDG_KR = 0xAAAA;
   
     WHEEL_DIODE = WHEEL_TOUCH;
     WHEEL_LIGHT = WHEEL_TOUCH | bitDelay3Seconds;
@@ -268,15 +284,67 @@ void main() {
       else if(adc_avg1 > (float)sideDifference){
         adc_avg1 = (float)sideDifference;
       }
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
 
       //dutyF = (adc_sum * 200f) / 4095f + 50f;
+      
+
+      fHalfSideDif = sideDifference / 2f;
+
+      if(adc_avg1 > fHalfSideDif){
+        fAdcAvg = adc_avg1-fHalfSideDif;
+      }
+      else if(adc_avg1 < fHalfSideDif){
+        fAdcAvg = fHalfSideDif-adc_avg1;
+      }
+      else{
+        fAdcAvg = 0f;
+      }
+      
+      fHalfDuty = (fAdcAvg * 5f) / (float)fHalfSideDif;
+      fHalfDutyAfterFun = 4f * fHalfDuty * fHalfDuty;
+
       if(dir != 0){
         dutyF = ((adc_avg1 * 200f) / ((float)sideDifference)) + 50f;
+        
+        if(adc_avg1 < fHalfSideDif){
+          fDuty = 150f - fHalfDutyAfterFun;
+        }
+        else if(adc_avg1 > fHalfSideDif){
+          fDuty = 150f + fHalfDutyAfterFun;
+        }
+        else{
+          fDuty = 150f;
+        }
+        
+
       }
       else{
         dutyF = 250f - ((adc_avg1 * 200f) / ((float)sideDifference));
+        
+        if(adc_avg1 < fHalfSideDif){
+          fDuty = 150f + fHalfDutyAfterFun;
+        }
+        else if(adc_avg1 > fHalfSideDif){
+          fDuty = 150f - fHalfDutyAfterFun;
+        }
+        else{
+          fDuty = 150f;
+        }
       }
-      calDutyF = (long)(dutyF * 100f);
+      calDutyF = (long)(fDuty * 100f);
       
 
 
@@ -286,14 +354,35 @@ void main() {
       else{
         dutyy = (int)dutyF;
       }
+
+
       
       calDuty = dutyy;
+      
 
+      
+      
+      if(((int)(fDuty * 10f)) % 10 >= 5){
+        dutyy = (int)fDuty + 1;
+      }
+      else{
+        dutyy = (int)fDuty;
+      }
+
+
+      //calDuty = dutyy;
+      
+
+
+
+      /*
       if(dutyy >= 149 && dutyy <= 151){
         dutyy = 150;
       }
+      */
 
-      if((!((dutyOld - 2 < dutyy) && (dutyy < dutyOld + 2))) && (dutyCounter < 4)){
+
+      if((!((dutyOld - 2 < dutyy) && (dutyy < dutyOld + 2))) && (dutyCounter < 3)){
         dutyy = dutyOld;
         dutyCounter++;
       }
@@ -301,6 +390,11 @@ void main() {
         dutyCounter = 0;
         dutyOld = dutyy;
       }
+      
+
+      
+      
+
 
       
       dutyyy = dutyy;

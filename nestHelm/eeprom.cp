@@ -1,5 +1,5 @@
-#line 1 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nestHelm/eeprom.c"
-#line 1 "c:/users/dan/desktop/new folder (2)/nest4/nesthelm/externdef.h"
+#line 1 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/eeprom.c"
+#line 1 "c:/users/dan/desktop/nneesstt/nesthelm/externdef.h"
 
 
 
@@ -101,7 +101,7 @@ extern bit bitResetTouchSensor;
 
 void uart1SendStatus(unsigned int gear_status, unsigned int dutyyy);
 void uart1SendCallibration();
-#line 6 "C:/Users/Dan/Desktop/New folder (2)/Nest4/nestHelm/eeprom.c"
+#line 6 "C:/Users/Dan/Desktop/NNEESSTT/nestHelm/eeprom.c"
 char data_[256];
 
 void EEPROM_24C02_Init() {
